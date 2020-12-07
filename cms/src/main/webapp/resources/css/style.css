@@ -1,0 +1,120 @@
+/* body{ */
+/* 	background-image: url('../img/background.jpg'); */
+/* } */
+
+.card-header{
+	background-color: #152f4f;
+	color: white;
+}
+
+.navbar {
+	background-color: #152f4f !important;
+}
+
+.navbarlogin {
+	background-color: #152f4f !important;
+}
+
+.btn-primary {
+	background-color: #152f4f !important;
+}
+
+.btn-primary:hover {
+	background-color: #0d47a1 !important;
+}
+
+.navbar-brandlogin{
+	align-content:center; 
+}
+
+form {
+	padding: 20px;
+}
+
+.card{
+	box-sizing: border-box;
+	margin-top: 20px;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.15), 0 4px 4px rgba(0,0,0,0.15), 0 8px 8px rgba(0,0,0,0.15);
+}
+
+
+nav{
+box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.15), 0 4px 4px rgba(0,0,0,0.15), 0 8px 8px rgba(0,0,0,0.15);
+}
+
+.card-header{
+	font-weight: bold;
+}
+
+.main_body{
+	background-color: #eeeeee;
+}
+
+.login {
+	min-width: 20rem;
+	height: 22rem;
+}
+
+/* input[type=text], input[type=number], input[type=password]{ */
+/* 	height: 27px;	 */
+/* } */
+
+.registration {
+	width: 40rem;
+	margin-bottom: 20px;
+	
+}
+
+.col-lg-6 {
+	padding-top: 10px;
+}
+
+.content{
+	background-color: #e0e0e0;
+	box-shadow: 0 1px 1px rgba(0,0,0,0.15), 0 2px 2px rgba(0,0,0,0.15), 0 4px 4px rgba(0,0,0,0.15), 0 8px 8px rgba(0,0,0,0.15);
+}
+
+.btn_login{
+	min-width: 300px;
+}
+
+.navbar{
+	width: 100%;
+}
+
+.logout_menu{
+	margin-left: -300px;
+}
+
+.footer {
+	 background: #152f4f;
+	 color: white;
+}
+ .footer .links ul {
+	 list-style-type: none;
+}
+ .footer .links li a {
+	 color: white;
+	 transition: color 0.2s;
+}
+ .footer .links li a:hover {
+	 text-decoration: none;
+	 color: #4180cb;
+}
+ .footer .about-company i {
+	 font-size: 25px;
+}
+ .footer .about-company a {
+	 color: white;
+	 transition: color 0.2s;
+}
+ .footer .about-company a:hover {
+	 color: #4180cb;
+}
+ .footer .location i {
+	 font-size: 18px;
+}
+ .footer .copyright p {
+	 border-top: 1px solid rgba(255, 255, 255, .1);
+}
+ 
