@@ -89,7 +89,7 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 		$(".alert-danger").fadeTo(2000, 500).slideUp(500, function(){
 			 document.querySelector(".login").style.height = "22rem";
 		    $(".alert-danger").slideUp(500);
-		    window.history.replaceState({}, document.title, "/" + "cms/login");
+		    window.history.replaceState({}, document.title, "/" + "cms/login.jsp");
 		});
 	</script>
 	</c:if>
@@ -100,7 +100,7 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 		$(".alert-primary").fadeTo(2000, 500).slideUp(500, function(){
 			 document.querySelector(".login").style.height = "22rem";
 		    $(".alert-primary").slideUp(500);
-		    window.history.replaceState({}, document.title, "/" + "login");
+		    window.history.replaceState({}, document.title, "/" + "cms/login.jsp");
 		});
 	</script>
 	</c:if>

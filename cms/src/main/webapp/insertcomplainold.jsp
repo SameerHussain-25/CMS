@@ -500,20 +500,20 @@ body {
 </head>
 <body class="main_body">
 
-<%-- <jsp:include page="/checksession" /> --%>
+<jsp:include page="/checksession" />
 		
 	<div class="page-wrapper chiller-theme toggled">
 		
 		<jsp:include page="/resources/parts/topnav.html" />
 		 <main class="page-content">
-		 <h1>${sessionScope.user}</h1>>
+		
 		<div class="container-fluid">
 			<div class="card justify-content-center">
 				<div class="card-header">Complain Insertion</div>
 				<form>
 
 					<div class="form-group">
-						<label for="complain_category_label">Hello <h1>${name} </h1>  Enter
+						<label for="complain_category_label">Hello <h1>${sessionScope.bean.Name} </h1>  Enter
 							your Complain</label>
 					</div>
 

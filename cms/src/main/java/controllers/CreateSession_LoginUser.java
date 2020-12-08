@@ -61,12 +61,11 @@ public class CreateSession_LoginUser extends HttpServlet {
 				rd.forward(request, response);
 			}
 			else if(status.equalsIgnoreCase("student")) {
-				System.out.println("in student if getting bean  by username");
 				StudentBean bean=model.CMSDbManager.getStudentByStdRollNum(uname);
 				rd=request.getRequestDispatcher("insertcomplainold.jsp");
 				  
-			       session.setAttribute("user","sessionattribute");
-			       request.setAttribute("name",bean.getName());
+			       session.setAttribute("user",bean);
+//			       request.setAttribute("name",bean.getName());
 				rd.forward(request, response);
 			}
 			else {

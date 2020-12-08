@@ -45,10 +45,10 @@ public class CheckSession extends HttpServlet {
 			rd.forward(request, response);
 		}
 		
-//		  StudentBean bean=(StudentBean)session.getAttribute("user");
-//		  System.out.println(" session id : "+bean.getstdId());
-			String sesi=(String)session.getAttribute("user");
-			 System.out.println("session value"+sesi); 
+		  StudentBean bean=(StudentBean)session.getAttribute("user");
+		  if(!(bean==null)) {
+		  System.out.println(" session bean : "+bean.getName());
+		  }
 	}
 
 
