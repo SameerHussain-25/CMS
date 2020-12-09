@@ -15,6 +15,7 @@
   -moz-transition: margin .25s ease-out;
   -o-transition: margin .25s ease-out;
   transition: margin .25s ease-out;
+  background: #152f4f !important;
   
 }
 
@@ -35,6 +36,14 @@
   margin-left: 0;
 }
 
+.bg-light{
+	background: #152f4f !important;
+	color: white;
+}
+
+.list-group-item{
+	border-top: 1px solid white !important;
+}
 
 @media (min-width: 768px) {
   #sidebar-wrapper {

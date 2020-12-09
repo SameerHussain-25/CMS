@@ -66,62 +66,7 @@ body {
 
 <jsp:include page="/checksession" />
 		
-<!-- 	<div class="page-wrapper chiller-theme toggled"> -->
-		
-<%-- 		<jsp:include page="/resources/parts/topnav.html" /> --%>
-<!-- 		 <main class="page-content"> -->
-		
-<!-- 		<div class="container-fluid"> -->
-<!-- 			<div class="card justify-content-center"> -->
-<!-- 				<div class="card-header">Complain Insertion</div> -->
-<!-- 				<form> -->
-
-<!-- 					<div class="form-group"> -->
-<%-- 						<label for="complain_category_label">Hello <h1>${sessionScope.bean.Name} </h1>  Enter --%>
-<!-- 							your Complain</label> -->
-<!-- 					</div> -->
-
-<!-- 					<div class="form-group"> -->
-<!-- 						<label for="complain_category_label">Complain Category</label> <select -->
-<!-- 							class="browser-default custom-select"> -->
-<!-- 							<option selected="">Open this select menu</option> -->
-<!-- 							<option value="1">One</option> -->
-<!-- 							<option value="2">Two</option> -->
-<!-- 							<option value="3">Three</option> -->
-<!-- 						</select> -->
-<!-- 					</div> -->
-
-<!-- 					<div class="form-group"> -->
-<!-- 						<label for="exampleFormControlTextarea1">Enter Complain</label> -->
-<!-- 						<textarea class="form-control" id="exampleFormControlTextarea1" -->
-<!-- 							rows="3"></textarea> -->
-<!-- 					</div> -->
-					
-<!-- 					<div class="input-group my-3"> -->
-<!-- 						<div class="input-group-prepend"> -->
-<!-- 							<span class="input-group-text" id="inputGroupFileAddon01">Upload</span> -->
-<!-- 						</div> -->
-						
-<!-- 						<div class="custom-file"> -->
-<!-- 							<input type="file" class="custom-file-input" id="inputGroupFile01" aria-describedby="inputGroupFileAddon01"> -->
-<!-- 							<label  class="custom-file-input" for="inputGroupFile01">Choose File</label>	 -->
-<!-- 						</div> -->
-<!-- 					</div> -->
-
-<!-- 					<button type="submit" class="btn btn-primary float-right">Add -->
-<!-- 						Complain</button> -->
-<!-- 					<button type="submit" class="btn btn-info">Back</button> -->
-<!-- 				</form> -->
-<!-- 			</div> -->
-			
-<!-- 			</div> -->
-<!-- 		</main> -->
-<%-- 		<jsp:include page="/resources/parts/footer.html" /> --%>
-<!-- 	</div> -->
-
-
-
-	<div class="d-flex" id="wrapper">
+   <div class="d-flex" id="wrapper">
 
     <!-- Sidebar -->
     <div class="bg-light border-right" id="sidebar-wrapper">
@@ -221,6 +166,6 @@ body {
   </div>
   <!-- /#wrapper -->
 		
-
+  </div>
 	</body>
 </html>
