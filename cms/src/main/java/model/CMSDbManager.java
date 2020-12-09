@@ -12,8 +12,8 @@ public class CMSDbManager {
 	/****************************************************** Connection Block *********************************************************/		
 	static{
 		try{
-			Class.forName("com.mysql.jdbc.Driver");
-		    String path="jdbc:mysql://localhost:3306/cms";
+			Class.forName("com.mysql.cj.jdbc.Driver");
+		    String path="jdbc:mysql://localhost:3306/cmss?useSSL=false&serverTimezone=UTC&useLegacyDatetimeCode=false";
             Class.forName("com.mysql.cj.jdbc.Driver");
             con=DriverManager.getConnection(path, "root", "");
 			System.out.println("Connection Established!!!");
