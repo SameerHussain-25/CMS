@@ -30,8 +30,17 @@ public class CreateSession_LoginUser extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		String uname=(String)request.getAttribute("uname");
+		StudentBean bean= null;
+				try {
+				bean = model.CMSDbManager.getStudentByStdRollNum(uname);
+				}catch(Exception e) {}
+		javax.servlet.http.HttpSession session=request.getSession();
+	       session.setAttribute("user",bean);
+
+		response.sendRedirect("insertcomplainold.jsp");
+		//	       request.setAttribute("name",bean.getName());
+//		rd.forward(request, response);
 	}
 
 	/**
@@ -60,11 +69,11 @@ public class CreateSession_LoginUser extends HttpServlet {
 			}
 			else if(status.equalsIgnoreCase("student")) {
 				StudentBean bean=model.CMSDbManager.getStudentByStdRollNum(uname);
-				rd=request.getRequestDispatcher("insertcomplainold.jsp");
+				response.sendRedirect("insertcomplainold.jsp");
 				  
 			       session.setAttribute("user",bean);
 //			       request.setAttribute("name",bean.getName());
-				rd.forward(request, response);
+//				rd.forward(request, response);
 			}
 			else {
 				rd=request.getRequestDispatcher("login.jsp");

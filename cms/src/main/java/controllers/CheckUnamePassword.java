@@ -52,26 +52,24 @@ public class CheckUnamePassword extends HttpServlet {
 		System.out.println("....uname : "+uname+"....password : "+pass);
 		
 		try {
-			if(model.CMSDbManager.checkAdminUnamePassword(uname, pass)) {
-				System.out.println("Admin found");
-				rd=request.getRequestDispatcher("/loginuser");
-				request.setAttribute("status","admin");
-				request.setAttribute("uname",uname);
-				request.setAttribute("pass",pass);
-				rd.forward(request, response);
-			}
-			else if(model.CMSDbManager.checkStudentUnamePassword(uname, pass)) {
+//			if(model.CMSDbManager.checkAdminUnamePassword(uname, pass)) {
+//				System.out.println("Admin found");
+//				rd=request.getRequestDispatcher("/loginuser");
+//				request.setAttribute("status","admin");
+//				request.setAttribute("uname",uname);
+//				request.setAttribute("pass",pass);
+//				rd.forward(request, response);
+//			}
+			if(model.CMSDbManager.checkStudentUnamePassword(uname, pass)) {
 				System.out.println("student found");
-				rd=request.getRequestDispatcher("/loginuser");
+				response.sendRedirect("loginuser");
 				request.setAttribute("status","student");
 				request.setAttribute("uname",uname);
 				request.setAttribute("pass",pass);
-				rd.forward(request, response);
+//				rd.forward(request, response);
 			}
 			else {
-				rd=request.getRequestDispatcher("login.jsp");
-				request.setAttribute("error","notfound");
-				rd.forward(request, response);
+				response.sendRedirect("login.jsp?error");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

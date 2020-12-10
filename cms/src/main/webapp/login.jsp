@@ -26,25 +26,31 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 </style>
 </head>
 <body>
+
+<%
+response.setHeader("cache-control", "no-store");
+
+model.StudentBean user = (model.StudentBean)session.getAttribute("user");
+if(user != null){
+	response.sendRedirect("insertcomplainold.jsp");	
+}
+
+%>
+
+
 	
 	<jsp:include page="/resources/parts/topnavlogin.html" />
-
-<%-- <center> --%>
-<!-- <img alt="logo" src="resources/logo/newlogo.png"> -->
-<%-- </center> --%>
 
 	<div class="col-lg-12 d-flex justify-content-center">
 		<div class="card login">
 			<div class="card-header">Login Form</div>
 			<form action="checkunamepassword" method="post">
-<%-- <%String e=(String)request.getAttribute("error");%> --%>
-<%-- <%out.println(e);%> --%>
-				<c:if test="${error != null}">					
+				<c:if test="${param.error != null}">					
 					<div class="alert alert-danger" role="alert">
   						Failed To Login User Not Found
 					</div>
 				</c:if>
-				<c:if test="${msg != null}">
+				<c:if test="${param.logout != null}">
 				<div class="alert alert-primary" role="alert">
   						You have been logged out
 				</div>
@@ -83,7 +89,7 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 	
 	<jsp:include page="/resources/parts/footer.html" />
 	
-	<c:if test="${error != null}">
+	<c:if test="${param.error != null}">
 	<script>
 		document.querySelector(".login").style.height = "27rem";
 		$(".alert-danger").fadeTo(2000, 500).slideUp(500, function(){
@@ -94,7 +100,7 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 	</script>
 	</c:if>
 	
-	<c:if test="${msg != null}">
+	<c:if test="${param.logout != null}">
 	<script>
 		document.querySelector(".login").style.height = "27rem";
 		$(".alert-primary").fadeTo(2000, 500).slideUp(500, function(){

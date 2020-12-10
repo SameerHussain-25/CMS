@@ -131,8 +131,19 @@ body {
 </style>
 </head>
 <body class="main_body">
+    
+<!--     These two lines are compulsory response header should be called from this page -->
+    <% response.setHeader("cache-control", "no-store");
 
-	<jsp:include page="/checksession" />
+
+	 model.StudentBean user = (model.StudentBean)session.getAttribute("user");
+	 if(user == null){
+		response.sendRedirect("login.jsp");	
+	 }
+    
+	%>
+    
+<%-- 	<jsp:include page="/checksession" /> --%>
 
 	<div class="d-flex" id="wrapper">
 
@@ -141,7 +152,7 @@ body {
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 
-			<jsp:include page="/resources/parts/topnav.html" />
+			<jsp:include page="/resources/parts/topnav.jsp" />
 
 			<div class="container-fluid">
 				<div class="card justify-content-center">
