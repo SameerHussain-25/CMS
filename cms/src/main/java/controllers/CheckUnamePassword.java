@@ -63,6 +63,7 @@ public class CheckUnamePassword extends HttpServlet {
 //				rd.forward(request, response);
 //			}
 			if(model.CMSDbManager.checkStudentUnamePassword(uname, pass)) {
+<<<<<<< HEAD
 				System.out.println("student found");
 				response.sendRedirect("loginuser");
 				request.setAttribute("status","student");
@@ -70,6 +71,8 @@ public class CheckUnamePassword extends HttpServlet {
 				request.setAttribute("pass",pass);
 //				rd.forward(request, response);
 
+=======
+>>>>>>> refs/remotes/origin/master
 //				System.out.println("student found");
 //				rd=request.getRequestDispatcher("/loginuser");
 //				request.setAttribute("status","student");
