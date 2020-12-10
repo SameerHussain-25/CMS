@@ -12,6 +12,7 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <style>
 	.form-group input[type=text],input[type=password]{
 		padding-left:33px; 
+		min-width: 300px !important;
 	}
 	.form-group{
 	position: relative;	
