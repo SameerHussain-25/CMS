@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import model.StudentBean;
+
 
 /**
  * Servlet implementation class CheckUnamePassword
@@ -29,8 +31,7 @@ public class CheckUnamePassword extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.sendRedirect("login.jsp");
 	}
 
 	/**
@@ -48,25 +49,34 @@ public class CheckUnamePassword extends HttpServlet {
 		
 		
 		RequestDispatcher rd;
+		javax.servlet.http.HttpSession session=request.getSession(true);
 		
 		System.out.println("....uname : "+uname+"....password : "+pass);
 		
 		try {
-			if(model.CMSDbManager.checkAdminUnamePassword(uname, pass)) {
-				System.out.println("Admin found");
-				rd=request.getRequestDispatcher("/loginuser");
-				request.setAttribute("status","admin");
-				request.setAttribute("uname",uname);
-				request.setAttribute("pass",pass);
-				rd.forward(request, response);
-			}
-			else if(model.CMSDbManager.checkStudentUnamePassword(uname, pass)) {
-				System.out.println("student found");
-				rd=request.getRequestDispatcher("/loginuser");
-				request.setAttribute("status","student");
-				request.setAttribute("uname",uname);
-				request.setAttribute("pass",pass);
-				rd.forward(request, response);
+//			if(model.CMSDbManager.checkAdminUnamePassword(uname, pass)) {
+//				System.out.println("Admin found");
+//				rd=request.getRequestDispatcher("/loginuser");
+//				request.setAttribute("status","admin");
+//				request.setAttribute("uname",uname);
+//				request.setAttribute("pass",pass);
+//				rd.forward(request, response);
+//			}
+			if(model.CMSDbManager.checkStudentUnamePassword(uname, pass)) {
+//				System.out.println("student found");
+//				rd=request.getRequestDispatcher("/loginuser");
+//				request.setAttribute("status","student");
+//				request.setAttribute("uname",uname);
+//				request.setAttribute("pass",pass);
+//				rd.forward(request, response);
+				
+				StudentBean bean=model.CMSDbManager.getStudentByStdRollNum(uname);
+//				rd=request.getRequestDispatcher("insertcomplainold.jsp");
+				  
+			       session.setAttribute("user",bean);
+//			       request.setAttribute("name",bean.getName());
+//				rd.forward(request, response);
+			       response.sendRedirect("insertcomplainold.jsp");
 			}
 			else {
 				rd=request.getRequestDispatcher("login.jsp");

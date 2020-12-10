@@ -26,7 +26,7 @@ padding: 0 10px;
 </head>
 <body>
 	
-	<jsp:include page="/resources/parts/topnav.html" />
+	<jsp:include page="/resources/parts/topnav.jsp" />
 	
 	
 		<div class="col-lg-12 d-flex justify-content-center" style="margin-top:50px">

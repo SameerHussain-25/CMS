@@ -132,7 +132,7 @@ body {
 </head>
 <body class="main_body">
 
-	<jsp:include page="/checksession" />
+<%-- 	<jsp:include page="/checksession" /> --%>
 
 	<div class="d-flex" id="wrapper">
 
@@ -141,7 +141,7 @@ body {
 		<!-- Page Content -->
 		<div id="page-content-wrapper">
 
-			<jsp:include page="/resources/parts/topnav.html" />
+			<jsp:include page="/resources/parts/topnav.jsp" />
 
 			<div class="container-fluid">
 				<div class="card justify-content-center">

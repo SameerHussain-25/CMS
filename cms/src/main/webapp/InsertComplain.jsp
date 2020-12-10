@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en" xmlns:th="http://thymeleaf.org"
+<html lang="en" 
 				>
 
 <head>
@@ -37,7 +37,7 @@
   	
 	<div class="page-wrapper chiller-theme toggled">
 		
-		<jsp:include page="/resources/parts/topnav.html" />
+		<jsp:include page="/resources/parts/topnav.jsp" />
 		 <main class="page-content">
 		 
 		<div class="container-fluid">
