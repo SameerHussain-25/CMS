@@ -135,17 +135,12 @@ body {
 <!--     These two lines are compulsory response header should be called from this page -->
     <% response.setHeader("cache-control", "no-store");
 
-<<<<<<< HEAD
-
 	 model.StudentBean user = (model.StudentBean)session.getAttribute("user");
 	 if(user == null){
 		response.sendRedirect("login.jsp");	
 	 }
     
 	%>
-    
-=======
->>>>>>> refs/remotes/origin/master
 <%-- 	<jsp:include page="/checksession" /> --%>
 
 	<div class="d-flex" id="wrapper">
