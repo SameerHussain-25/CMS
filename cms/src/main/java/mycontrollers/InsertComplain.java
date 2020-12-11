@@ -26,7 +26,6 @@ public class InsertComplain extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
 		javax.servlet.http.HttpSession session=request.getSession();
-		
 		model.StudentBean user = (model.StudentBean)session.getAttribute("user");
 		 if(user != null){
 			request.getRequestDispatcher("WEB-INF/view/insertcomplain.jsp").forward(request,response);	
