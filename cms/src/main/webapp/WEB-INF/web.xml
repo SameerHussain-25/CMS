@@ -3,6 +3,91 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
+  <display-name>Archetype Created Web Application</display-name>
+  <servlet>
+  	<servlet-name>Student_registration</servlet-name>
+  	<display-name>Student_registration</display-name>
+  	<description></description>
+  	<servlet-class>controllers.Student_registration</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Checking_std_rollnumber</servlet-name>
+  	<display-name>Checking_std_rollnumber</display-name>
+  	<description></description>
+  	<servlet-class>controllers.Checking_std_rollnumber</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Data</servlet-name>
+  	<display-name>Data</display-name>
+  	<description></description>
+  	<servlet-class>controllers.Data</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>CheckUnamePassword</servlet-name>
+  	<display-name>CheckUnamePassword</display-name>
+  	<description></description>
+  	<servlet-class>controllers.CheckUnamePassword</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>CreateSession_LoginUser</servlet-name>
+  	<display-name>CreateSession_LoginUser</display-name>
+  	<description></description>
+  	<servlet-class>controllers.CreateSession_LoginUser</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>CheckSession</servlet-name>
+  	<display-name>CheckSession</display-name>
+  	<description></description>
+  	<servlet-class>controllers.CheckSession</servlet-class>
+  </servlet>
+  <servlet>
+  	<servlet-name>Logout</servlet-name>
+  	<display-name>Logout</display-name>
+  	<description></description>
+  	<servlet-class>controllers.Logout</servlet-class>
+  </servlet>
+ 
+ 
+  
+<!--   Servlet of jsp class -->
+  
+<!--   	<servlet> -->
+<!--   	<servlet-name>login</servlet-name> -->
+<!--   	<display-name>Login</display-name> -->
+<!--   	<description></description> -->
+<!--   	<servlet-class>mycontrollers.Login</servlet-class> -->
+<!--   </servlet> -->
+  
+<!--  ////////////////////////////  -->
+  <servlet-mapping>
+  	<servlet-name>Student_registration</servlet-name>
+  	<url-pattern>/Student_registration</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Checking_std_rollnumber</servlet-name>
+  	<url-pattern>/Checking_std_rollnumber</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Data</servlet-name>
+  	<url-pattern>/Data</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CheckUnamePassword</servlet-name>
+  	<url-pattern>/CheckUnamePassword</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CreateSession_LoginUser</servlet-name>
+  	<url-pattern>/CreateSession_LoginUser</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>CheckSession</servlet-name>
+  	<url-pattern>/CheckSession</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+  	<servlet-name>Logout</servlet-name>
+  	<url-pattern>/Logout</url-pattern>
+  </servlet-mapping>
 	<display-name>Archetype Created Web Application</display-name>
 	<servlet>
 		<servlet-name>Student_registration</servlet-name>
@@ -48,8 +133,6 @@
 	</servlet>
 
 
-	<!-- Servlet of jsp class -->
-
 
 
 	<!-- //////////////////////////// -->
@@ -82,9 +165,4 @@
 		<url-pattern>/Logout</url-pattern>
 	</servlet-mapping>
 
-<!-- 	Jsp Mapping -->
-
-			
-
-<!--      //////////// -->
 </web-app>
