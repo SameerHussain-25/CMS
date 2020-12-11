@@ -1,6 +1,10 @@
 <!DOCTYPE html>
+<<<<<<< HEAD
+<html lang="en">
+=======
 <html lang="en" 
 				>
+>>>>>>> refs/remotes/origin/master
 
 <head>
 

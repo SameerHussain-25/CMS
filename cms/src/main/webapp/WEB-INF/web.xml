@@ -46,6 +46,18 @@
   	<description></description>
   	<servlet-class>controllers.Logout</servlet-class>
   </servlet>
+  
+  
+<!--   Servlet of jsp class -->
+  
+<!--   	<servlet> -->
+<!--   	<servlet-name>login</servlet-name> -->
+<!--   	<display-name>Login</display-name> -->
+<!--   	<description></description> -->
+<!--   	<servlet-class>mycontrollers.Login</servlet-class> -->
+<!--   </servlet> -->
+  
+<!--  ////////////////////////////  -->
   <servlet-mapping>
   	<servlet-name>Student_registration</servlet-name>
   	<url-pattern>/Student_registration</url-pattern>
@@ -74,4 +86,11 @@
   	<servlet-name>Logout</servlet-name>
   	<url-pattern>/Logout</url-pattern>
   </servlet-mapping>
+
+<!--   <servlet-mapping> -->
+  	
+<!--   	<servlet-name>Login</servlet-name> -->
+<!--   	<servlet-class>login.jsp</servlet-class> -->
+<!--   </servlet-mapping> -->
+
 </web-app>

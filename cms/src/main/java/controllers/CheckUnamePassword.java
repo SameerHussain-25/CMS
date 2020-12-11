@@ -63,6 +63,13 @@ public class CheckUnamePassword extends HttpServlet {
 //				rd.forward(request, response);
 //			}
 			if(model.CMSDbManager.checkStudentUnamePassword(uname, pass)) {
+				System.out.println("student found");
+				response.sendRedirect("loginuser");
+				request.setAttribute("status","student");
+				request.setAttribute("uname",uname);
+				request.setAttribute("pass",pass);
+//				rd.forward(request, response);
+
 //				System.out.println("student found");
 //				rd=request.getRequestDispatcher("/loginuser");
 //				request.setAttribute("status","student");
@@ -79,9 +86,7 @@ public class CheckUnamePassword extends HttpServlet {
 			       response.sendRedirect("insertcomplainold.jsp");
 			}
 			else {
-				rd=request.getRequestDispatcher("login.jsp");
-				request.setAttribute("error","notfound");
-				rd.forward(request, response);
+				response.sendRedirect("login.jsp?error");
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

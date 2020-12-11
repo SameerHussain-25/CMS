@@ -13,7 +13,7 @@ public class CMSDbManager {
 	static{
 		try{
 			Class.forName("com.mysql.cj.jdbc.Driver");
-		    String path="jdbc:mysql://localhost:3306/cms?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		    String path="jdbc:mysql://localhost:3306/cmss?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             Class.forName("com.mysql.cj.jdbc.Driver");
             con=DriverManager.getConnection(path, "root", "");
 			System.out.println("Connection Established!!!");
