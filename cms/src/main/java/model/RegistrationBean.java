@@ -4,14 +4,14 @@ public class RegistrationBean {
 	
 	 	private int stdRegid;
 	    private int stdId;
-	    private int cnic;
+	    private String cnic;
 	    private String password;
 	    
 
 	    public RegistrationBean() {
 	    }
 
-	    public RegistrationBean(int stdId, int cnic, String password) {
+	    public RegistrationBean(int stdId, String cnic, String password) {
 	        this.stdId = stdId;
 	        this.cnic = cnic;
 	        this.password = password;
@@ -33,11 +33,11 @@ public class RegistrationBean {
 	        this.stdId = stdId;
 	    }
 
-	    public int getCnic() {
+	    public String getCnic() {
 	        return cnic;
 	    }
 
-	    public void setCnic(int cnic) {
+	    public void setCnic(String cnic) {
 	        this.cnic = cnic;
 	    }
 
