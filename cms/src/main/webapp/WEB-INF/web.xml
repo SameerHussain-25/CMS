@@ -3,12 +3,7 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-	<servlet>
-  	<servlet-name>Logout</servlet-name>
-  	<display-name>Logout</display-name>
-  	<description></description>
-  	<servlet-class>controllers.Logout</servlet-class>
-  </servlet>
+	
 	<servlet>
 		<servlet-name>ComplainRepository</servlet-name>
 		<display-name>ComplainRepository</display-name>
@@ -16,11 +11,6 @@
 		<servlet-class>repository.ComplainRepository</servlet-class>
 	</servlet>
 
- 
-	<servlet-mapping>
-		<servlet-name>Logout</servlet-name>
-		<url-pattern>/Logout</url-pattern>
-	</servlet-mapping>
 	<servlet-mapping>
 		<servlet-name>ComplainRepository</servlet-name>
 		<url-pattern>/ComplainRepository</url-pattern>

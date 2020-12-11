@@ -47,7 +47,7 @@ if(uname != null && pass != null){
 		response.sendRedirect("login?error");
 	}
 }
-	request.getRequestDispatcher("insertComplain").include(request,response);
+	
 } catch (Exception e) {
 	// TODO Auto-generated catch block
 	e.printStackTrace();

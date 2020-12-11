@@ -1,7 +1,8 @@
 package model;
 
-import java.sql.DriverManager;  
-import java.sql.SQLException;
+import java.sql.DriverManager;
+import java.sql.Timestamp;
+import java.util.ArrayList;
 
 public class CMSDbManager {
 	
@@ -13,7 +14,7 @@ public class CMSDbManager {
 	static{
 		try{
 			Class.forName("com.mysql.cj.jdbc.Driver");
-		    String path="jdbc:mysql://localhost:3306/cms?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
+		    String path="jdbc:mysql://localhost:3306/cmss?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
             Class.forName("com.mysql.cj.jdbc.Driver");
             con=DriverManager.getConnection(path, "root", "");
 			System.out.println("Connection Established!!!");
@@ -194,6 +195,83 @@ public class CMSDbManager {
 			  return check;
 		}   
 	 	  
-  
+		  ///////********Students TABLE ********///////
+		    ///////******** Get student data by roll_num  
+		  public static ArrayList<ComplainBean> getComplains()throws Exception{
+		  String query =  "SELECT * FROM complain";
+		  System.out.println("Query : "+query);
+		  java.sql.PreparedStatement ps = null;
+		  java.sql.ResultSet rs = null;
+		  ArrayList<ComplainBean> list = null;
+		  
+		  try{
+		      ps = con.prepareStatement(query);
+		      rs = ps.executeQuery();
+		      if(rs != null){
+		          while(rs.next()){
+		        	  
+		        	  if(list == null)
+		        		  list = new ArrayList<ComplainBean>();
+		        	  
+		        	  ComplainBean bean = new ComplainBean();
+		        	  
+		        	  bean.setcomplainId(rs.getInt("complain_id"));
+		        	  bean.setcomplainCatId(rs.getInt("complain_cat_id"));
+		        	  bean.setstdRegId(rs.getInt("std_reg_id"));
+		        	  bean.setComplain(rs.getString("complain"));
+		        	  bean.setLocation(rs.getString("location"));
+		        	  java.util.Date date = rs.getDate("datetime");
+		        	  Timestamp ts=new Timestamp(date.getTime());
+		        	  bean.setDatetime(ts);
+		        	  bean.setRemark(rs.getString("remarks"));
+		        	  
+		        	  list.add(bean);
+		         }
+		      }
+		      return list;
+		  }finally{
+		      if(ps != null) ps.close();
+		      if(rs != null) rs.close();
+		  }
+		  
+		}
+		  
+		  ///////********Students TABLE ********///////
+		    ///////******** Get student data by roll_num  
+		  public static ArrayList<String> getComplainCategoryByComplainCatIdAndStdRegId(int complainCatId, int stdRegId)throws Exception{
+		  String query =  "SELECT complain_category.category, student.std_name FROM complain JOIN\r\n"
+		  		+ "							complain_category ON complain.complain_cat_id =\r\n"
+		  		+ "							complain_category.complain_cat_id JOIN registration ON\r\n"
+		  		+ "							complain.std_reg_id = registration.std_reg_id JOIN student ON\r\n"
+		  		+ "							registration.std_id = student.std_id\r\n"
+		  		+ "							WHERE complain.complain_cat_id = "+complainCatId+" AND complain.std_reg_id ="+stdRegId;
+			  System.out.println("Query : "+query);
+			  java.sql.PreparedStatement ps = null;
+			  java.sql.ResultSet rs = null;
+			  ArrayList<String> list = null;
+			  
+			  try{
+			      ps = con.prepareStatement(query);
+			      rs = ps.executeQuery();
+			      if(rs != null){
+			          while(rs.next()){
+			        	  
+			        	  if(list == null)
+			        		  list = new ArrayList<String>();
+		  	  
+			        	  list.add(rs.getString("std_name"));
+			        	  list.add(rs.getString("category"));
+			
+			         }
+			      }
+			      return list;
+			  }finally{
+			      if(ps != null) ps.close();
+			      if(rs != null) rs.close();
+			  }
+			  
+		}
+
+
 	  
 }
