@@ -3,6 +3,9 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
+
+	
+
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
   	<servlet-name>Student_registration</servlet-name>
@@ -46,7 +49,8 @@
   	<description></description>
   	<servlet-class>controllers.Logout</servlet-class>
   </servlet>
-  
+ 
+ 
   
 <!--   Servlet of jsp class -->
   
@@ -86,6 +90,7 @@
   	<servlet-name>Logout</servlet-name>
   	<url-pattern>/Logout</url-pattern>
   </servlet-mapping>
+
 
 <!--   <servlet-mapping> -->
   	
