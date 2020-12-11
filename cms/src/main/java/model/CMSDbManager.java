@@ -40,7 +40,7 @@ public class CMSDbManager {
         try{
             ps = con.prepareStatement(query);
             ps.setInt(1, bean.getstdId());
-            ps.setInt(2, bean.getCnic());
+            ps.setString(2, bean.getCnic());
             ps.setString(3, bean.getPassword());
             ps.setTimestamp(4,new java.sql.Timestamp(System.currentTimeMillis()));
 

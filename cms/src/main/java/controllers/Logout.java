@@ -26,12 +26,10 @@ public class Logout extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-	    System.out.println("logout servlet doGET");
 
 	    javax.servlet.http.HttpSession session=request.getSession();
 	    session.invalidate();
-	    response.sendRedirect("login.jsp?logout");
+	    response.sendRedirect("login?logout");
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
