@@ -3,9 +3,6 @@
  "http://java.sun.com/dtd/web-app_2_3.dtd" >
 
 <web-app>
-<<<<<<< HEAD
-
-	
 
   <display-name>Archetype Created Web Application</display-name>
   <servlet>
@@ -91,7 +88,6 @@
   	<servlet-name>Logout</servlet-name>
   	<url-pattern>/Logout</url-pattern>
   </servlet-mapping>
-=======
 	<display-name>Archetype Created Web Application</display-name>
 	<servlet>
 		<servlet-name>Student_registration</servlet-name>
@@ -135,19 +131,7 @@
 		<description></description>
 		<servlet-class>controllers.Logout</servlet-class>
 	</servlet>
->>>>>>> refs/remotes/origin/master
 
-<<<<<<< HEAD
-
-<!--   <servlet-mapping> -->
-  	
-<!--   	<servlet-name>Login</servlet-name> -->
-<!--   	<servlet-class>login.jsp</servlet-class> -->
-<!--   </servlet-mapping> -->
-=======
->>>>>>> refs/remotes/origin/master
-
-	<!-- Servlet of jsp class -->
 
 
 
@@ -181,9 +165,4 @@
 		<url-pattern>/Logout</url-pattern>
 	</servlet-mapping>
 
-<!-- 	Jsp Mapping -->
-
-			
-
-<!--      //////////// -->
 </web-app>
