@@ -293,9 +293,10 @@ body {
 							<label for="complain_category_label">Complain Category</label> <select
 								class="browser-default custom-select">
 								<option selected="">Open this select menu</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
+								<c:forEach var="list" items="${catObj}">
+									<option value=${list.complainCatId}>${list.category}</option>
+								</c:forEach>
+
 							</select>
 						</div>
 

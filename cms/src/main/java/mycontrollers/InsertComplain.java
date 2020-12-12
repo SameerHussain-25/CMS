@@ -1,12 +1,15 @@
 package mycontrollers;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import model.ComplainCatBean;
 
 @WebServlet("/insertComplain")
 public class InsertComplain extends HttpServlet {
@@ -24,7 +27,13 @@ public class InsertComplain extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
+		try {
+			ArrayList<ComplainCatBean> list=model.CMSDbManager.getCategory();
+			request.setAttribute("catObj",list);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 		javax.servlet.http.HttpSession session=request.getSession();
 		model.StudentBean user = (model.StudentBean)session.getAttribute("user");
 		 if(user != null){

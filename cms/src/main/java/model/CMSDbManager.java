@@ -1,8 +1,13 @@
 package model;
 
+<<<<<<< HEAD
+import java.sql.DriverManager;   
+import java.sql.SQLException;
+=======
 import java.sql.DriverManager;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+>>>>>>> refs/remotes/origin/master
 
 public class CMSDbManager {
 	
@@ -95,19 +100,17 @@ public class CMSDbManager {
     ///////********Students TABLE ********///////
     ///////******** cheking std admisiion by roll_num 
 	  public static boolean checkStdAdmissionByRollNum(String stdRollNum)throws Exception{
-		  String query =  "SELECT * FROM student WHERE roll_num=?";
+		  String query =  "SELECT * FROM complain_category ";
 		  System.out.println("Query : "+query);
 		  java.sql.PreparedStatement ps = null;
 		  java.sql.ResultSet rs = null;
-	
-		  boolean check=false;
+boolean check=false;
 		  try{
 		      ps = con.prepareStatement(query);
-		      ps.setString(1,stdRollNum);
 		      rs = ps.executeQuery();
 		      if(rs != null){
 		          while(rs.next()){
-		        	  check=true;
+		        	check=true; 
 		          }
 		          }
 		  }finally{
@@ -193,7 +196,37 @@ public class CMSDbManager {
 			      if(rs != null) rs.close();
 			  }
 			  return check;
-		}   
+		}
+		  
+		  
+///......Get ComplainCategory
+  public static java.util.ArrayList<ComplainCatBean> getCategory()throws Exception{
+	  String query =  "SELECT * FROM  WHERE roll_num=?";
+	  System.out.println("Query : "+query);
+	  java.sql.PreparedStatement ps = null;
+	  java.sql.ResultSet rs = null;
+	  java.util.ArrayList<ComplainCatBean> list = null;
+	  
+	  boolean check=false;
+	  try{
+	      ps = con.prepareStatement(query);
+	      rs = ps.executeQuery();
+	      if(rs != null){
+	          while(rs.next()){
+	        	  ComplainCatBean bean=new ComplainCatBean();
+	        	  bean.setComplainCatId(rs.getInt("complain_cat_id"));
+	              bean.setCategory(rs.getString("category"));
+	              bean.setRemarks(rs.getString("remarks"));
+	              list.add(bean);
+	          }
+	      }
+	  }finally{
+	      if(ps != null) ps.close();
+	      if(rs != null) rs.close();
+	  }
+	  return list;
+}	  
+		  
 	 	  
 		  ///////********Students TABLE ********///////
 		    ///////******** Get student data by roll_num  
