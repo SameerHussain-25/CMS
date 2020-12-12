@@ -389,9 +389,10 @@ body {
 			<jsp:include page="/resources/parts/topnav.jsp" />
 
 			<div class="container-fluid">
-				
+			<c:choose>
+			<c:when test="${complains != null}">
 			  <c:forEach var="bean" items="${complains}">
-			
+				
 				<div class="card justify-content-center">
 					<div class="card-header">
 					   Complain
@@ -432,6 +433,19 @@ body {
 				</div>
 				
 			  </c:forEach>
+			  </c:when>
+			  <c:otherwise>
+			    
+			    	<div class="card justify-content-center">
+					<div class="card-header">
+					   No Data
+					</div>
+					<div class="card-body">
+						<h1>There are no complains yet</h1>
+					</div>
+					</div>	    
+			  </c:otherwise>
+			  </c:choose>
 			</div>
 			<jsp:include page="/resources/parts/footer.html" />
 			<!-- /#page-content-wrapper -->
