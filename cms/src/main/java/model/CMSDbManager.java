@@ -1,13 +1,8 @@
 package model;
 
-<<<<<<< HEAD
-import java.sql.DriverManager;   
-import java.sql.SQLException;
-=======
 import java.sql.DriverManager;
 import java.sql.Timestamp;
 import java.util.ArrayList;
->>>>>>> refs/remotes/origin/master
 
 public class CMSDbManager {
 	
@@ -100,17 +95,19 @@ public class CMSDbManager {
     ///////********Students TABLE ********///////
     ///////******** cheking std admisiion by roll_num 
 	  public static boolean checkStdAdmissionByRollNum(String stdRollNum)throws Exception{
-		  String query =  "SELECT * FROM complain_category ";
+		  String query =  "SELECT * FROM student WHERE roll_num=?";
 		  System.out.println("Query : "+query);
 		  java.sql.PreparedStatement ps = null;
 		  java.sql.ResultSet rs = null;
-boolean check=false;
+	
+		  boolean check=false;
 		  try{
 		      ps = con.prepareStatement(query);
+		      ps.setString(1,stdRollNum);
 		      rs = ps.executeQuery();
 		      if(rs != null){
 		          while(rs.next()){
-		        	check=true; 
+		        	  check=true;
 		          }
 		          }
 		  }finally{
@@ -196,42 +193,12 @@ boolean check=false;
 			      if(rs != null) rs.close();
 			  }
 			  return check;
-		}
-		  
-		  
-///......Get ComplainCategory
-  public static java.util.ArrayList<ComplainCatBean> getCategory()throws Exception{
-	  String query =  "SELECT * FROM  WHERE roll_num=?";
-	  System.out.println("Query : "+query);
-	  java.sql.PreparedStatement ps = null;
-	  java.sql.ResultSet rs = null;
-	  java.util.ArrayList<ComplainCatBean> list = null;
-	  
-	  boolean check=false;
-	  try{
-	      ps = con.prepareStatement(query);
-	      rs = ps.executeQuery();
-	      if(rs != null){
-	          while(rs.next()){
-	        	  ComplainCatBean bean=new ComplainCatBean();
-	        	  bean.setComplainCatId(rs.getInt("complain_cat_id"));
-	              bean.setCategory(rs.getString("category"));
-	              bean.setRemarks(rs.getString("remarks"));
-	              list.add(bean);
-	          }
-	      }
-	  }finally{
-	      if(ps != null) ps.close();
-	      if(rs != null) rs.close();
-	  }
-	  return list;
-}	  
-		  
+		}   
 	 	  
 		  ///////********Students TABLE ********///////
 		    ///////******** Get student data by roll_num  
-		  public static ArrayList<ComplainBean> getComplains()throws Exception{
-		  String query =  "SELECT * FROM complain";
+		  public static ArrayList<ComplainBean> getComplains(int stdRegId)throws Exception{
+		  String query =  "SELECT * FROM complain where std_reg_id="+stdRegId;
 		  System.out.println("Query : "+query);
 		  java.sql.PreparedStatement ps = null;
 		  java.sql.ResultSet rs = null;
@@ -271,6 +238,32 @@ boolean check=false;
 		  
 		  ///////********Students TABLE ********///////
 		    ///////******** Get student data by roll_num  
+		  public static int getStdRegId(int stdId)throws Exception{
+		  String query =  "SELECT registration.std_reg_id FROM student JOIN registration ON student.std_id = registration.std_id WHERE student.std_id ="+stdId;
+		  System.out.println("Query : "+query);
+		  java.sql.PreparedStatement ps = null;
+		  java.sql.ResultSet rs = null;
+		  
+		  try{
+		      ps = con.prepareStatement(query);
+		      rs = ps.executeQuery();
+		      int stdRegId = 0;
+		      if(rs != null){
+		          while(rs.next()){
+		        	  
+		        	  stdRegId = rs.getInt("std_reg_id");
+		         }
+		      }
+		      return stdRegId;
+		  }finally{
+		      if(ps != null) ps.close();
+		      if(rs != null) rs.close();
+		  }
+		  
+		}
+		  
+		  ///////********Students TABLE ********///////
+		    ///////******** Get student data by roll_num  
 		  public static ArrayList<String> getComplainCategoryByComplainCatIdAndStdRegId(int complainCatId, int stdRegId)throws Exception{
 		  String query =  "SELECT complain_category.category, student.std_name FROM complain JOIN\r\n"
 		  		+ "							complain_category ON complain.complain_cat_id =\r\n"
@@ -294,7 +287,8 @@ boolean check=false;
 		  	  
 			        	  list.add(rs.getString("std_name"));
 			        	  list.add(rs.getString("category"));
-			
+			        	  
+			        	  
 			         }
 			      }
 			      return list;

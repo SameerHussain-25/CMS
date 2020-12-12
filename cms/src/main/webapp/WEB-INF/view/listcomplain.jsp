@@ -396,7 +396,6 @@ body {
 					<div class="card-header">
 					   Complain
 					</div>
-					<img class="card-img-top" src="..." alt="Card image cap">
 					<div class="card-body">
 						<h5 class="card-title">Complain Text</h5>
 						<p class="card-text">${bean.complain}</p>

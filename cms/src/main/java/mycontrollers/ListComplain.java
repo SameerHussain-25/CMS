@@ -30,15 +30,13 @@ public class ListComplain extends HttpServlet {
 		
 		if(user != null){
 			try {
-			
-				ArrayList<ComplainBean> complains = CMSDbManager.getComplains();
+				int stdRegId = CMSDbManager.getStdRegId(user.getstdId());
+				ArrayList<ComplainBean> complains = CMSDbManager.getComplains(stdRegId);
 				request.setAttribute("complains",complains);
-			
+				request.getRequestDispatcher("/WEB-INF/view/listcomplain.jsp").forward(request,response);
 			}catch(Exception e) {
 				e.printStackTrace();
-			}
-			
-			request.getRequestDispatcher("/WEB-INF/view/listcomplain.jsp").forward(request,response);	
+			}	
 		 }
 		 else {
 			 response.sendRedirect("login");
