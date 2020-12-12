@@ -299,6 +299,48 @@ public class CMSDbManager {
 			  
 		}
 
-
+		  ///////********Students TABLE ********///////
+		    ///////******** Get student data by roll_num  
+		  public static ArrayList<StudentBean> getStudents()throws Exception{
+		  String query =  "SELECT * FROM student";
+		  System.out.println("Query : "+query);
+		  java.sql.PreparedStatement ps = null;
+		  java.sql.ResultSet rs = null;
+		  
+		  ArrayList<StudentBean> list = null;
+		  
+		  try{
+		      ps = con.prepareStatement(query);
+		      rs = ps.executeQuery();
+		      if(rs != null){
+		          while(rs.next()){
+		        	  
+		        	  if(list == null)
+		        		  list = new ArrayList<StudentBean>();
+		        	  
+		        	  StudentBean bean = new StudentBean();
+		        	  
+		          	  bean.setstdId(rs.getInt("std_id"));
+		              bean.setName(rs.getString("std_name"));
+		              bean.setfatherName(rs.getString("father_name"));
+		              bean.setSurname(rs.getString("surname"));
+		              bean.setReligion(rs.getString("religion"));
+		              bean.setCountry(rs.getString("country"));
+		              bean.setGender(rs.getString("gender"));
+		              bean.setrollNum(rs.getString("roll_num"));
+		              bean.setDepartment(rs.getString("department"));
+		              bean.setProgram(rs.getString("program"));
+		              bean.setBatch(rs.getString("batch"));
+		              
+		              list.add(bean);
+		            }
+		      }
+		      return list;
+		  }finally{
+		      if(ps != null) ps.close();
+		      if(rs != null) rs.close();
+		  }
+		  
+		}
 	  
 }
