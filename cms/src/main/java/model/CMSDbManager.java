@@ -222,6 +222,49 @@ public class CMSDbManager {
 		        	  bean.setLocation(rs.getString("location"));
 		        	  java.util.Date date = rs.getDate("datetime");
 		        	  Timestamp ts=new Timestamp(date.getTime());
+		        	  bean.setStatus(rs.getInt("status"));
+		        	  bean.setDatetime(ts);
+		        	  bean.setRemark(rs.getString("remarks"));
+		        	  
+		        	  list.add(bean);
+		         }
+		      }
+		      return list;
+		  }finally{
+		      if(ps != null) ps.close();
+		      if(rs != null) rs.close();
+		  }
+		  
+		}
+		
+		  ///////********Students TABLE ********///////
+		    ///////******** Get student data by roll_num  
+		  public static ArrayList<ComplainBean> getComplains()throws Exception{
+		  String query =  "SELECT * FROM complain";
+		  System.out.println("Query : "+query);
+		  java.sql.PreparedStatement ps = null;
+		  java.sql.ResultSet rs = null;
+		  ArrayList<ComplainBean> list = null;
+		  
+		  try{
+		      ps = con.prepareStatement(query);
+		      rs = ps.executeQuery();
+		      if(rs != null){
+		          while(rs.next()){
+		        	  
+		        	  if(list == null)
+		        		  list = new ArrayList<ComplainBean>();
+		        	  
+		        	  ComplainBean bean = new ComplainBean();
+		        	  
+		        	  bean.setcomplainId(rs.getInt("complain_id"));
+		        	  bean.setcomplainCatId(rs.getInt("complain_cat_id"));
+		        	  bean.setstdRegId(rs.getInt("std_reg_id"));
+		        	  bean.setComplain(rs.getString("complain"));
+		        	  bean.setLocation(rs.getString("location"));
+		        	  java.util.Date date = rs.getDate("datetime");
+		        	  Timestamp ts=new Timestamp(date.getTime());
+		        	  bean.setStatus(rs.getInt("status"));
 		        	  bean.setDatetime(ts);
 		        	  bean.setRemark(rs.getString("remarks"));
 		        	  
@@ -261,6 +304,27 @@ public class CMSDbManager {
 		  }
 		  
 		}
+		  
+		  ///////********Students TABLE ********///////
+		    ///////******** Get student data by roll_num  
+		  public static boolean updateStatus(int complainId)throws Exception{
+		  String query = "update complain set status=1 where complain_id="+complainId;
+		  System.out.println("Query : "+query);
+		  java.sql.PreparedStatement ps = null;
+		  java.sql.ResultSet rs = null;
+		  
+		  boolean b = false;
+		  try{
+		      ps = con.prepareStatement(query);
+		      b = ps.execute();
+		      
+		      return b;
+		  }finally{
+		      if(ps != null) ps.close();
+		      if(rs != null) rs.close();
+		  }
+		  
+		}  
 		  
 		  ///////********Students TABLE ********///////
 		    ///////******** Get student data by roll_num  

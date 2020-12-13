@@ -97,7 +97,7 @@ padding: 0 10px;
 
 	
 	  function addStd(){
-	    	alert("Working");
+	   
 	 	        var stdid = $("#stdid").val();
 	 	        var cnic = $("#cnic").val();
 	 	        var password = $("#confirm_password").val();
@@ -107,7 +107,7 @@ padding: 0 10px;
 	 	            data: { stdid: stdid, cnic: cnic, password:password},
 	 	            dataType: 'html',
 	 	            success:function(response){
-	 	            	alert("hello");
+	 	            
 	 	            $('#data').html("");
 					$('#data').html("<div class=\"alert alert-success\" role=alert>Created Successfully!</div>");
 					$('#rollnum').attr('readonly',false);

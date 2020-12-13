@@ -68,5 +68,7 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
       "autoWidth": false,
       "responsive": true,
     });
-  });
+
+ 
+	 
 </script>

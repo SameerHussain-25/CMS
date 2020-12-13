@@ -10,6 +10,7 @@ public class ComplainBean {
 	private String complain;
 	private String location;
 	private Timestamp datetime;
+	private int status;
 	private String remark;
 
 	    public ComplainBean() {
@@ -72,6 +73,15 @@ public class ComplainBean {
 	    public void setDatetime(Timestamp datetime) {
 	        this.datetime = datetime;
 	    }
+	    
+	    public int getStatus() {
+			return status;
+		}
+
+		public void setStatus(int status) {
+			this.status = status;
+		}
+
 
 	    public String getRemark() {
 	        return remark;

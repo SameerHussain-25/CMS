@@ -1,19 +1,13 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>AdminPanel 3 | Dashboard</title>
-  
-  <jsp:include page="/resources/adminParts/adminCSS.jsp" />
-  
-</head>
-<body class="hold-transition sidebar-mini layout-fixed">
-<div class="wrapper">
 
+<jsp:include page="/resources/adminParts/adminCSS.jsp">
+ 	
+ 	 <jsp:param name="listComplain" value="yes"/>
+ 	 <jsp:param name="file" value="Dashboard"/>
+ 	
+ </jsp:include>
  <jsp:include page="/resources/adminParts/adminNav.jsp" />
  <jsp:include page="/resources/adminParts/adminSidebar.jsp" />
 
