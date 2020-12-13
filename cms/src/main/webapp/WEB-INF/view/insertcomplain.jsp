@@ -1,3 +1,5 @@
+<%@page import="repository.PathSet,java.sql.Timestamp"%>
+<%@page import="com.oreilly.servlet.MultipartRequest" %>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 	pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c"%>
@@ -265,6 +267,32 @@ body {
 
 	<%
 		response.setHeader("cache-control", "no-store");
+		
+	if(request.getMethod().equals("POST")){
+		
+		model.StudentBean bean = (model.StudentBean)session.getAttribute("user");
+		
+		String fileLocation = PathSet.getLocation(bean.getstdId());
+		MultipartRequest m=new MultipartRequest(request,fileLocation);
+		
+		String id = m.getParameter("complainCategory");
+		String complain = m.getParameter("complain");
+		
+		if(complain != null && id != null){
+			
+			int complainCatId = Integer.parseInt(id);
+			Timestamp timestamp = new Timestamp(System.currentTimeMillis());
+			int stdRegId = model.CMSDbManager.getStdRegId(bean.getstdId());
+			
+			try{
+				
+				model.CMSDbManager.addComplain(complainCatId, stdRegId, complain, fileLocation, timestamp);
+			
+			}catch(Exception e){
+				e.printStackTrace();
+			}
+		}
+	}
 	%>
 
 	<div class="d-flex" id="wrapper">
@@ -279,7 +307,7 @@ body {
 			<div class="container-fluid">
 				<div class="card justify-content-center">
 					<div class="card-header">Complain Insertion</div>
-					<form>
+					<form action="" method="post" enctype="multipart/form-data">
 
 						<div class="form-group">
 							<label for="complain_category_label">Hello
@@ -288,21 +316,24 @@ body {
 								</h1> Enter your Complain
 							</label>
 						</div>
-
+						
 						<div class="form-group">
 							<label for="complain_category_label">Complain Category</label> <select
-								class="browser-default custom-select">
-								<option selected="">Open this select menu</option>
-								<option value="1">One</option>
-								<option value="2">Two</option>
-								<option value="3">Three</option>
+								class="browser-default custom-select" name="complainCategory" required>
+								<option  value="">Open this select menu</option>
+								
+								<c:forEach var="bean" items="${list}">
+								
+									<option value="${bean.complainCatId}">${bean.category}</option>
+									
+								</c:forEach>
 							</select>
 						</div>
 
 						<div class="form-group">
 							<label for="exampleFormControlTextarea1">Enter Complain</label>
 							<textarea class="form-control" id="exampleFormControlTextarea1"
-								rows="3"></textarea>
+								rows="3" name="complain" required></textarea>
 						</div>
 
 						<div class="input-group my-3">
@@ -332,6 +363,5 @@ body {
 	</div>
 
 	<script src="${pageContext.request.contextPath}/resources/js/js.js"></script>
-
 </body>
 </html>

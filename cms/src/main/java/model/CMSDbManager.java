@@ -365,6 +365,41 @@ public class CMSDbManager {
 
 		  ///////********Students TABLE ********///////
 		    ///////******** Get student data by roll_num  
+		  public static ArrayList<ComplainCatBean> getComplainCategories()throws Exception{
+		  String query =  "SELECT * from complain_category";
+		      System.out.println("Query : "+query);
+			  java.sql.PreparedStatement ps = null;
+			  java.sql.ResultSet rs = null;
+			  ArrayList<ComplainCatBean> list = null;
+			  
+			  try{
+			      ps = con.prepareStatement(query);
+			      rs = ps.executeQuery();
+			      if(rs != null){
+			          while(rs.next()){
+			        	  
+			        	  ComplainCatBean bean = new ComplainCatBean();
+			        	  
+			        	  if(list == null)
+			        		  list = new ArrayList<ComplainCatBean>();
+		  	  
+			        	  bean.setComplainCatId(rs.getInt("complain_cat_id"));
+			        	  bean.setCategory(rs.getString("category"));
+			        	  bean.setRemarks(rs.getString("remarks"));
+			        	  
+			        	  list.add(bean);
+			         }
+			      }
+			      return list;
+			  }finally{
+			      if(ps != null) ps.close();
+			      if(rs != null) rs.close();
+			  }
+			  
+		}
+		  
+		  ///////********Students TABLE ********///////
+		    ///////******** Get student data by roll_num  
 		  public static ArrayList<StudentBean> getStudents()throws Exception{
 		  String query =  "SELECT * FROM student";
 		  System.out.println("Query : "+query);
@@ -405,6 +440,36 @@ public class CMSDbManager {
 		      if(rs != null) rs.close();
 		  }
 		  
+		}
+		  
+		  ///////********Students TABLE ********///////
+		    ///////******** Get student data by roll_num  
+		  public static void addComplain(int complainCatId, int stdRegId, String complain, String location, Timestamp datetime)throws Exception {
+		  
+			  String query =  "insert into complain(complain_cat_id, std_reg_id, complain, location, datetime, status)"
+			  		+ " values(?,?,?,?,?,?)";
+		     
+		  	  System.out.println("Query : "+query);
+			  java.sql.PreparedStatement ps = null;
+			  java.sql.ResultSet rs = null;
+			  ArrayList<ComplainCatBean> list = null;
+			  
+			  try{
+			      ps = con.prepareStatement(query);
+			      
+			      ps.setInt(1, complainCatId);
+			      ps.setInt(2, stdRegId);
+			      ps.setString(3, complain);
+			      ps.setString(4, location);
+			      ps.setTimestamp(5, datetime);
+			      ps.setInt(6, 0);
+			      
+			      int i = ps.executeUpdate();
+			  }finally{
+			      if(ps != null) ps.close();
+			      if(rs != null) rs.close();
+			  }
+			  
 		}
 	  
 }
