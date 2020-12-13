@@ -29,9 +29,9 @@ public class AdminIndex extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String name = "admin";
+		String name = "admi";
 		
-		if(name.equals("admin")) {
+		if(name.equals("admi")) {
 			try {
 				
 				ArrayList<StudentBean> list = CMSDbManager.getStudents();
