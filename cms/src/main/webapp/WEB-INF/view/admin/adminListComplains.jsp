@@ -8,7 +8,11 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
  	
  </jsp:include>
  <jsp:include page="/resources/adminParts/adminNav.jsp" />
- <jsp:include page="/resources/adminParts/adminSidebar.jsp" />
+ <jsp:include page="/resources/adminParts/adminSidebar.jsp">
+ 	
+ 	<jsp:param name="complainList" value="active"/>
+ 	
+ </jsp:include>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
@@ -54,8 +58,15 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
       	
       	  <jsp:include page="/resources/adminParts/adminColorBox.jsp" />
 
+		<div class="container mt-3">
+  <h2>Search From Complains</h2>
+  <input class="form-control" id="myInput" type="text" placeholder="Search..">
+  <br>
+ 
+</div>
+		
         <div class="row">
-          <div class="col-12">
+          <div class="col-12" id="cards">
 <!--             card start -->
 
 			<c:choose>
@@ -156,5 +167,18 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <!-- ./wrapper -->
 
  <jsp:include page="/resources/adminParts/adminScripts.jsp" />
+ 
+ <script>
+ 
+ $(document).ready(function(){
+  $("#myInput").on("keyup", function() {
+    var value = $(this).val().toLowerCase();
+    $("#cards").filter(function() {
+      $(this).toggle($(this).text().toLowerCase().indexOf(value) > -1)
+    });
+  });
+});
+ 
+ </script>
 </body>
 </html>

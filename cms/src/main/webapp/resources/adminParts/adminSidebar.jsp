@@ -16,7 +16,7 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
           <img src="dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">Alexander Pierce</a>
+          <a href="#" class="d-block">Sameer</a>
         </div>
       </div>
 
@@ -38,7 +38,7 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item menu-open">
-            <a href="index.html" class="nav-link active">
+            <a href="${pageContext.request.contextPath}/admin" class="nav-link ${param.dashboard}">
               <em class="nav-icon fas fa-tachometer-alt"></em>
               <p>
                 Dashboard
@@ -46,7 +46,7 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
             </a>
           </li>
           <li class="nav-item">
-            <a href="complaints.html" class="nav-link">
+            <a href="${pageContext.request.contextPath}/admin/listComplains" class="nav-link ${param.complainList}">
               <em class="nav-icon fas fa-envelope-open-text"></em>
               <p>
                 Complaints

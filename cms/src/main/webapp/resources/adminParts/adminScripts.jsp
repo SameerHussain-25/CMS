@@ -69,6 +69,6 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
       "responsive": true,
     });
 
- 
+  });
 	 
 </script>

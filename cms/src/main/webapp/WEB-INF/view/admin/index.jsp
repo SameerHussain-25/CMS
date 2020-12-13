@@ -9,7 +9,11 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
  	
  </jsp:include>
  <jsp:include page="/resources/adminParts/adminNav.jsp" />
- <jsp:include page="/resources/adminParts/adminSidebar.jsp" />
+ <jsp:include page="/resources/adminParts/adminSidebar.jsp">
+ 	
+ 	<jsp:param name="dashboard" value="active"/>
+ 
+ </jsp:include>
 
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
