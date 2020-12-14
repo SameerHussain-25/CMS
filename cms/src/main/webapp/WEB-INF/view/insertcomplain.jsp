@@ -286,6 +286,10 @@ body {
 			
 			try{
 				
+				java.io.File f = new java.io.File(fileLocation);
+		        String pathnames[] = f.list();
+		     	fileLocation += "/"+pathnames[0];
+				
 				model.CMSDbManager.addComplain(complainCatId, stdRegId, complain, fileLocation, timestamp);
 				pageContext.setAttribute("done","yes");
 			}catch(Exception e){
