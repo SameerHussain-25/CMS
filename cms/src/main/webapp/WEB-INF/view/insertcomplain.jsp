@@ -287,7 +287,7 @@ body {
 			try{
 				
 				model.CMSDbManager.addComplain(complainCatId, stdRegId, complain, fileLocation, timestamp);
-			
+				pageContext.setAttribute("done","yes");
 			}catch(Exception e){
 				e.printStackTrace();
 			}
@@ -307,6 +307,10 @@ body {
 			<div class="container-fluid">
 				<div class="card justify-content-center">
 					<div class="card-header">Complain Insertion</div>
+					<c:if test="${done=='yes'}">
+					<div class="alert alert-success" role=alert>Inserted Successfully!</div>
+					</c:if>
+					
 					<form action="" method="post" enctype="multipart/form-data">
 
 						<div class="form-group">

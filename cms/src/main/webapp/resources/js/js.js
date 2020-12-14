@@ -9,3 +9,7 @@ document.querySelector('.custom-file-input').addEventListener('change', function
 	nextSibling.innerText = fileName
 });
 
+document.querySelector(".login").style.height = "27rem";
+		$(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+		    $(".alert-success").slideUp(500);
+		});
