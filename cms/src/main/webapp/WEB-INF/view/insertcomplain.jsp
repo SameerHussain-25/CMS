@@ -272,7 +272,7 @@ body {
 		
 		model.StudentBean bean = (model.StudentBean)session.getAttribute("user");
 		
-		String fileLocation = PathSet.getLocation(bean.getstdId());
+		String fileLocation = PathSet.getLocation(bean.getrollNum());
 		MultipartRequest m=new MultipartRequest(request,fileLocation);
 		
 		String id = m.getParameter("complainCategory");

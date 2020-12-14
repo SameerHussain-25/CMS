@@ -11,7 +11,7 @@ public class PathSet {
 
 	
 	
-	public static String getLocation(int stdId) {
+	public static String getLocation(String stdId) {
 		
 		String fileLocation = "";
 		
