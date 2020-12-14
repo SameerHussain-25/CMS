@@ -45,7 +45,7 @@ public class InsertComplain extends HttpServlet {
 				e.printStackTrace();
 			}
 		} else {
-			response.sendRedirect("login");
+			response.sendRedirect("login?error");
 		}
 
 	}

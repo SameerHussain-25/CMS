@@ -29,11 +29,10 @@ public class AdminIndex extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		String name = "admi";
-		
-		if(name.equals("admi")) {
+		javax.servlet.http.HttpSession session = request.getSession();
+		model.AdminBean admin = (model.AdminBean) session.getAttribute("admin");
+		if (admin != null) {
 			try {
-				
 				ArrayList<StudentBean> list = CMSDbManager.getStudents();
 				request.setAttribute("list", list);
 				request.getRequestDispatcher("/WEB-INF/view/admin/index.jsp").forward(request, response);
@@ -41,6 +40,8 @@ public class AdminIndex extends HttpServlet {
 			}catch(Exception e) {
 				e.printStackTrace();
 			}
+		}else {
+			response.sendRedirect("login?error");
 		}
 	}
 

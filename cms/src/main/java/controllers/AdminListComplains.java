@@ -28,7 +28,10 @@ public class AdminListComplains extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
 	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) {
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)throws ServletException, IOException {
+		javax.servlet.http.HttpSession session = request.getSession();
+		model.AdminBean admin = (model.AdminBean) session.getAttribute("admin");
+		if (admin != null) {
 		try {
 			
 			ArrayList<ComplainBean> complains = CMSDbManager.getComplains();
@@ -38,7 +41,11 @@ public class AdminListComplains extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}else {
+		response.sendRedirect("login?error");
 	}
+		
+}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {

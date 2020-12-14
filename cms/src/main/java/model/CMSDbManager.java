@@ -169,6 +169,38 @@ public class CMSDbManager {
 		  return check;
 	}  
 	  
+	    ///////********Admin Table ********///////
+	    ///////******** Getting admin by user name and password
+		  public static AdminBean getAdminByUnamePassword(String name,String password)throws Exception{
+			  String query =  "SELECT * FROM admin WHERE NAME=? AND PASSWORD=?";
+			  System.out.println("Query : "+query);
+			  java.sql.PreparedStatement ps = null;
+			  java.sql.ResultSet rs = null;
+			  AdminBean bean=null;
+		
+			  try{
+			      ps = con.prepareStatement(query);
+			      ps.setString(1,name);
+			      ps.setString(2,password);
+			      rs = ps.executeQuery();
+			      if(rs != null){
+			    	  bean=new AdminBean();
+			          while(rs.next()){
+			        	 bean.setAdminId(rs.getInt("admin_id"));
+			        	 bean.setAdminName(rs.getString("name"));
+			        	 bean.setAdminPassword(rs.getString("password"));
+			        	 bean.setRemarks(rs.getString("remarks"));
+			          }
+			          }
+			      return bean;
+			  }finally{
+			      if(ps != null) ps.close();
+			      if(rs != null) rs.close();
+			  }
+			 
+		}	  
+	  
+	  
 	    ///////********registration Table ********///////
 	    ///////******** cheking student by user name and password
 		  public static boolean checkStudentUnamePassword(String rollnum,String password)throws Exception{

@@ -1,3 +1,4 @@
+<%@page import="model.AdminBean"%>
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
@@ -38,10 +39,17 @@ try {
 
 if(uname != null && pass != null){
 	if(model.CMSDbManager.checkStudentUnamePassword(uname, pass)) {
+		
 		model.StudentBean bean=model.CMSDbManager.getStudentByStdRollNum(uname);
-		  
 	    session.setAttribute("user",bean);
 	    response.sendRedirect("insertComplain");
+	    
+	}else if(model.CMSDbManager.checkAdminUnamePassword(uname, pass)){
+		
+		AdminBean bean=model.CMSDbManager.getAdminByUnamePassword(uname, pass); 
+	    session.setAttribute("admin",bean);
+	    response.sendRedirect("admin");	
+	    
 	}
 	else {
 		response.sendRedirect("login?error");
