@@ -43,7 +43,6 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
             data: {id:id},
             
             success:function(response){
-            	alert("working");
             	$("#seen"+id).addClass('btn-success').removeClass('btn-danger');
             	$("#seen"+id).prop('disbaled',true);
             }
