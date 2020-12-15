@@ -2,6 +2,9 @@
 pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
+<%
+response.setHeader("cache-control", "no-store");
+%>
 <jsp:include page="/resources/adminParts/adminCSS.jsp">
  	
  	 <jsp:param name="listComplain" value="yes"/>
@@ -45,7 +48,7 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title">Students Data</h3>
+                <h3 class="card-title" style="font-family: Arial Black;">Universty Students Data</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
@@ -113,6 +116,62 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
         </div>
         <!-- /.row -->
       </div><!-- /.container-fluid -->
+  
+       <div class="container-fluid">
+        <div class="row">
+          <div class="col-12">
+            <div class="card">
+              <div class="card-header">
+                <h3 class="card-title" style="font-family: Arial Black;">CMS Registerd Students Data</h3>
+              </div>
+              <!-- /.card-header -->
+              <div class="card-body">
+                <table id="example1" class="table table-bordered table-striped" aria-describedby="DataTable">
+                  <thead>
+                  <tr>
+                    <th scope="header_table">Student Reg ID</th>
+                    <th scope="header_table">Student Name</th>
+                    <th scope="header_table">CNIC number</th>
+                    <th scope="header_table">Login user_name</th>
+                    <th scope="header_table">Password</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  
+                  <c:if test="${regstd != null}">
+            
+                  <c:forEach var="regstd" items="${regstd}">
+                  
+	                  <tr>
+	                 	<td>${regstd.stdRegId}</td>
+	                 	<td>${regstd.stdName}</td>
+	                 	<td>${regstd.cnic}</td>
+	                 	<td>${regstd.logId}</td>
+	                 	<td>${regstd.password}</td>
+	                  </tr>
+                  
+                  </c:forEach>
+                  </c:if>
+                  </tbody>
+                  <tfoot>
+                  <tr>
+               <th scope="header_table">Student Reg ID</th>
+                    <th scope="header_table">Student Name</th>
+                    <th scope="header_table">CNIC number</th>
+                    <th scope="header_table">Login user_name</th>
+                    <th scope="header_table">Password</th>
+                  </tr>
+                  </tfoot>
+                </table>
+              </div>
+              <!-- /.card-body -->
+            </div>
+            <!-- /.card -->
+          </div>
+          <!-- /.col -->
+        </div>
+        <!-- /.row -->
+      </div><!-- /.container-fluid -->     
     </section>
     <!-- /.content -->
   </div>

@@ -28,20 +28,23 @@ public class Login extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		model.StudentBean user = (model.StudentBean)session.getAttribute("user");
+		model.AdminBean admin = (model.AdminBean)session.getAttribute("amin");
 		
 		String logout = request.getParameter("logout");
 		String error = request.getParameter("error");
 		
-		if(logout != null)
+		if(logout != null) {
 			request.getRequestDispatcher("/WEB-INF/view/login.jsp?logout").forward(request, response);
-		
-		else if(error != null)
+		}
+		else if(error != null) {
 			request.getRequestDispatcher("/WEB-INF/view/login.jsp?error").forward(request, response);
-		
-		
-		else if(user != null)
+		}
+		else if(user != null) {
 			response.sendRedirect("insertComplain");
-		
+		}
+		else if(admin !=null) {
+			response.sendRedirect("admin");
+		}
 		else 
 			request.getRequestDispatcher("/WEB-INF/view/login.jsp").forward(request, response);
 	}

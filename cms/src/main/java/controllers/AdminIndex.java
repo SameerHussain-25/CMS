@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import model.CMSDbManager;
+import model.RegStdDataBean;
 import model.StudentBean;
 
 @WebServlet("/admin")
@@ -35,6 +36,8 @@ public class AdminIndex extends HttpServlet {
 			try {
 				ArrayList<StudentBean> list = CMSDbManager.getStudents();
 				request.setAttribute("list", list);
+				ArrayList<RegStdDataBean> regstd=CMSDbManager.getRegStudentsData();
+				request.setAttribute("list2",regstd);
 				request.getRequestDispatcher("/WEB-INF/view/admin/index.jsp").forward(request, response);
 			
 			}catch(Exception e) {

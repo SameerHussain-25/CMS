@@ -1,14 +1,24 @@
-  <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
+  <%@page import="model.CMSDbManager"%>
+<%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%
+int stdQty=CMSDbManager.getTotalStudents();
+int regStdQty=CMSDbManager.getTotalRegistedStds();
+int comqty=CMSDbManager.getTotalComplains();
+
+pageContext.setAttribute("stdQty",stdQty);
+pageContext.setAttribute("regStdQty",regStdQty);
+pageContext.setAttribute("comQty",comqty);
+%>
   <!-- Small boxes (Stat box) -->
         <div class="row">
           <div class="col-lg-3 col-6">
             <!-- small box -->
             <div class="small-box bg-info">
               <div class="inner">
-                <h3>150</h3>
+                <h3>${stdQty}</h3>
 
-                <p>New Orders</p>
+                <p>Total Students In Universty</p>
               </div>
               <div class="icon">
                 <i class="ion ion-bag"></i>
@@ -21,9 +31,9 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
             <!-- small box -->
             <div class="small-box bg-success">
               <div class="inner">
-                <h3>53<sup style="font-size: 20px">%</sup></h3>
+                <h3>${regStdQty}</h3>
 
-                <p>Bounce Rate</p>
+                <p>CMS Registerd Students </p>
               </div>
               <div class="icon">
                 <i class="ion ion-stats-bars"></i>
@@ -36,9 +46,9 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
             <!-- small box -->
             <div class="small-box bg-warning">
               <div class="inner">
-                <h3>44</h3>
+                <h3>${comQty}</h3>
 
-                <p>User Registrations</p>
+                <p>Complains</p>
               </div>
               <div class="icon">
                 <i class="ion ion-person-add"></i>

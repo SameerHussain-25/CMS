@@ -3,6 +3,7 @@ package model;
 import java.sql.DriverManager;
 import java.sql.Timestamp;
 import java.util.ArrayList;
+import java.util.concurrent.CountDownLatch;
 
 public class CMSDbManager {
 	
@@ -512,34 +513,145 @@ public class CMSDbManager {
 		  
 		}
 		  
-		  ///////********Students TABLE ********///////
-		    ///////******** Get student data by roll_num  
-		  public static void addComplain(int complainCatId, int stdRegId, String complain, String location, Timestamp datetime)throws Exception {
-		  
-			  String query =  "insert into complain(complain_cat_id, std_reg_id, complain, location, datetime, status)"
-			  		+ " values(?,?,?,?,?,?)";
-		     
-		  	  System.out.println("Query : "+query);
-			  java.sql.PreparedStatement ps = null;
-			  java.sql.ResultSet rs = null;
-			  ArrayList<ComplainCatBean> list = null;
-			  
-			  try{
-			      ps = con.prepareStatement(query);
-			      
-			      ps.setInt(1, complainCatId);
-			      ps.setInt(2, stdRegId);
-			      ps.setString(3, complain);
-			      ps.setString(4, location);
-			      ps.setTimestamp(5, datetime);
-			      ps.setInt(6, 0);
-			      
-			      int i = ps.executeUpdate();
-			  }finally{
-			      if(ps != null) ps.close();
-			      if(rs != null) rs.close();
-			  }
-			  
-		}
+  ///////********Students TABLE ********///////
+    ///////******** Get student data by roll_num  
+  public static void addComplain(int complainCatId, int stdRegId, String complain, String location, Timestamp datetime)throws Exception {
+  
+	  String query =  "insert into complain(complain_cat_id, std_reg_id, complain, location, datetime, status)"
+	  		+ " values(?,?,?,?,?,?)";
+     
+  	  System.out.println("Query : "+query);
+	  java.sql.PreparedStatement ps = null;
+	  java.sql.ResultSet rs = null;
+	  ArrayList<ComplainCatBean> list = null;
 	  
+	  try{
+	      ps = con.prepareStatement(query);
+	      
+	      ps.setInt(1, complainCatId);
+	      ps.setInt(2, stdRegId);
+	      ps.setString(3, complain);
+	      ps.setString(4, location);
+	      ps.setTimestamp(5, datetime);
+	      ps.setInt(6, 0);
+	      
+	      int i = ps.executeUpdate();
+	  }finally{
+	      if(ps != null) ps.close();
+	      if(rs != null) rs.close();
+	  }
+	  
+ }
+  
+///////********Getting numbers of students,complain and register students ********///////
+  
+///////******** getting students
+public static int getTotalStudents()throws Exception{
+	String query ="SELECT COUNT(*) FROM student";
+	System.out.println("Query : "+query);
+	java.sql.PreparedStatement ps = null;
+	java.sql.ResultSet rs = null;
+	
+	try{
+	  ps = con.prepareStatement(query);
+	  rs = ps.executeQuery();
+	  int count=0;
+	  if(rs != null){	  
+	      while(rs.next()){
+	    	  count=rs.getInt(1);
+	      }
+	    }
+	  return count;
+	}finally{
+	  if(ps != null) ps.close();
+	  if(rs != null) rs.close();
+	}
+}
+
+///////******** getting registerd students
+public static int getTotalRegistedStds()throws Exception{
+String query ="SELECT COUNT(*) FROM registration";
+System.out.println("Query : "+query);
+java.sql.PreparedStatement ps = null;
+java.sql.ResultSet rs = null;
+
+try{
+ps = con.prepareStatement(query);
+rs = ps.executeQuery();
+int count=0;
+if(rs != null){	  
+    while(rs.next()){
+  	  count=rs.getInt(1);
+    }
+  }
+return count;
+}finally{
+if(ps != null) ps.close();
+if(rs != null) rs.close();
+}
+}
+
+///////******** getting complains
+public static int getTotalComplains()throws Exception{
+	String query ="SELECT COUNT(*) FROM complain";
+	System.out.println("Query : "+query);
+	java.sql.PreparedStatement ps = null;
+	java.sql.ResultSet rs = null;
+	
+	try{
+	ps = con.prepareStatement(query);
+	rs = ps.executeQuery();
+	int count=0;
+	if(rs != null){	  
+	    while(rs.next()){
+	  	  count=rs.getInt(1);
+	    }
+	  }
+	return count;
+	}finally{
+	if(ps != null) ps.close();
+	if(rs != null) rs.close();
+	}	
+} 
+//********Getting numbers of students,complain and register students ********END
+
+//......getting registerd students for admin panel list......
+public static ArrayList<RegStdDataBean> getRegStudentsData()throws Exception{
+	
+	String query =  "SELECT registration.`std_reg_id`,student.`std_name`,student.`roll_num`,registration.`cnic`,registration.`password` FROM registration,student\r\n"
+			+ "WHERE registration.`std_id`=student.`std_id`";
+	System.out.println("Query : "+query);
+	java.sql.PreparedStatement ps = null;
+	java.sql.ResultSet rs = null;
+	
+	ArrayList<RegStdDataBean> list = null;
+	
+	try{
+	    ps = con.prepareStatement(query);
+	    rs = ps.executeQuery();
+	    if(rs != null){
+	        while(rs.next()){
+	      	  
+	      	  if(list == null)
+	      		  list = new ArrayList<RegStdDataBean>();
+	      	  
+	      	  RegStdDataBean bean = new RegStdDataBean();	 
+	        	bean.setStd_reg_id(rs.getInt("std_reg_id"));
+	            bean.setStd_name(rs.getString("std_name"));
+	            bean.setCnic(rs.getString("cnic"));
+	            bean.setLog_id(rs.getString("roll_num"));
+	            bean.setPassword(rs.getString("password"));
+	           
+	            list.add(bean);
+	          }
+	    }
+	    return list;
+	}finally{
+	    if(ps != null) ps.close();
+	    if(rs != null) rs.close();
+	}
+
+}
+
+
 }
