@@ -4,24 +4,31 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 public class PathSet {
 
 	
 	
-	public static String getLocation(String stdId) {
+	public static String getLocation(int stdId,String name) {
 		
 		String fileLocation = "";
-		
-		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		String foldername=stdId+" "+name;
+//		DateTimeFormatter dtf = DateTimeFormatter.ofPattern("yyyy/MM/dd HH:mm:ss");
+		 DateFormat dateformat2=new SimpleDateFormat("dd-MM-yyyy hh-mm aa");
 		LocalDateTime now = LocalDateTime.now();
 
-		String replacedSlashes = dtf.format(now).replaceAll("\\/", " ");
-		replacedSlashes = replacedSlashes.replaceAll(":", "_");
+		
+//		  String replacedSlashes = dtf.format(now).replaceAll("\\/", " ");
+//		  replacedSlashes = replacedSlashes.replaceAll(":", "_");
+		 
 
-		fileLocation = System.getProperty("user.dir")+"/uploads/" + stdId + "/" + replacedSlashes;
+		fileLocation = System.getProperty("user.dir")+"/uploads/" + foldername + "/" + dateformat2.format(new Date());
+		System.out.println(fileLocation);
 
 		// creating directory if not exist.
 		try {
