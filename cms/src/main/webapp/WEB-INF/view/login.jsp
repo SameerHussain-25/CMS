@@ -26,6 +26,17 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 	color: #152f4f;
 	}
 </style>
+<script type="text/javascript">
+function validateForm() {
+	  var x = document.forms["myForm"]["username"].value;
+	  if (x == "") {
+	    
+	    return false;
+	  }
+	}
+</script>
+
+
 </head>
 <body>
 
@@ -38,6 +49,7 @@ String pass=request.getParameter("password");
 try {
 
 if(uname != null && pass != null){
+	
 	if(model.CMSDbManager.checkStudentUnamePassword(uname, pass)) {
 		
 		model.StudentBean bean=model.CMSDbManager.getStudentByStdRollNum(uname);
@@ -72,7 +84,7 @@ if(uname != null && pass != null){
 	<div class="col-lg-12 d-flex justify-content-center">
 		<div class="card login">
 			<div class="card-header">Login Form</div>
-			<form action="" method="post">
+			<form name="myForm" action="" method="post" onsubmit="return validateForm()">
 				<c:if test="${param.error != null}">					
 					<div class="alert alert-danger" role="alert">
   						Failed To Login User Not Found
@@ -83,12 +95,17 @@ if(uname != null && pass != null){
   						You have been logged out
 				</div>
 				</c:if>
+				<c:if test="${param.nulldata != null}">
+			<div class="alert alert-warning" role="alert">
+  This is a warning alert—check it out!
+</div>
+				</c:if>
 				<div class="form-group">
 					<label for="Username">Username</label> 
 					<div class="row">
 						
 						<div class="col-lg-10"> 
-							<input type="text"class="form-control" id="username" name="username" placeholder="Enter Username">
+							<input type="text"class="form-control" id="username" name="username"  placeholder="Enter Username">
 						</div>	
 						<i class="fas fa-user"></i>
 					</div>	
@@ -98,14 +115,14 @@ if(uname != null && pass != null){
 					<label for="Username">Password</label> 
 					<div class="row">
 						<div class="col-lg-10"> 
-							<input type="password" class="form-control" id="password" name="password" placeholder="Enter password">
+							<input type="password" class="form-control" id="password" name="password"  placeholder="Enter password">
 						</div>
 						<i class="fas fa-lock"></i>	
 					</div>	
 				</div>
 
 				<div class="form-group">
-					<label for="password">Don't have account? <a href="register.jsp">Create
+					<label for="password">Don't have account? <a href="registration">Create
 							Account</a></label>
 				</div>
 

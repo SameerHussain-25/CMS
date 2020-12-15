@@ -54,7 +54,11 @@ public class Checking_std_rollnumber extends HttpServlet {
 								System.out.println(" std already registerd");
 								writer.println("<div class=\"alert alert-danger\" role=\"alert\">\r\n"
 										+ "Already Register!\r\n"
-										+ "</div>");		
+										+ "</div>");
+								writer.println("<script>		$(\".alert-danger\").fadeTo(2000, 500).slideUp(500, function(){\r\n"
+										+ "		    $(\".alert-danger\").slideUp(500);\r\n"
+										+ "		   \r\n"
+										+ "		});</script>");
 						}
 						else{
 							//continue registration process the student
@@ -121,6 +125,10 @@ public class Checking_std_rollnumber extends HttpServlet {
 					writer.println("<div class=\"alert alert-danger\" role=\"alert\">\r\n"
 							+ "Not A Universty Student!\r\n"
 							+ "</div>");
+					writer.println("<script>		$(\".alert-danger\").fadeTo(2000, 500).slideUp(500, function(){\r\n"
+							+ "		    $(\".alert-danger\").slideUp(500);\r\n"
+							+ "		   \r\n"
+							+ "		});</script>");
 				}
 	
 			} catch (Exception e) {

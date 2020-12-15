@@ -53,8 +53,7 @@ padding: 0 10px;
 					<div class="card-header">Student Registration</div>
 						<div class="form-group"  id="usernameform">
 							<label for="Name">Roll_Number</label> <input type="text"
-								class="form-control" id="rollnum" name="rollnum" placeholder="eg.2k17/ite/93" required="required">
-								<small>Error message</small>
+								class="form-control" id="rollnum" name="rollnum" required="required"  placeholder="eg.2k17/ite/93" >
 						</div>
 							
 						<div id="data">
@@ -86,8 +85,8 @@ padding: 0 10px;
 						$('#search').html("Create Account");
 						$('#search').attr('onclick','addStd()');
 						$('#rollnum').attr('readonly',true);
-						$('#cnic').attr('required',true);
-						$('#password').attr('required',true);
+						$('#cnic').attr('required',required);
+						$('#password').attr('required',required);
 						$('#usernameform').addClass('error');
 						$('#search').attr('id','createaccount');
 					}
@@ -107,21 +106,22 @@ padding: 0 10px;
 	 	            data: { stdid: stdid, cnic: cnic, password:password},
 	 	            dataType: 'html',
 	 	            success:function(response){
-	 	            
 	 	            $('#data').html("");
 					$('#data').html("<div class=\"alert alert-success\" role=alert>Created Successfully!</div>");
 					$('#rollnum').attr('readonly',false);
 					$('#rollnum').val("");
+					$('#createaccount').html('id','search');
+					$('#search').html('Search');
 	 	            }
 	 	        });
 	  }
-		     
-		    
-		function checkInputs(){
-			
-			$('#usernameform').addClass('error');
-		} 
-		
+		   
+	  
+		$(".alert-success").fadeTo(2000, 500).slideUp(500, function(){
+		    $(".alert-success").slideUp(500);
+		   
+		});
+
 	
 	</script>
 </body>
