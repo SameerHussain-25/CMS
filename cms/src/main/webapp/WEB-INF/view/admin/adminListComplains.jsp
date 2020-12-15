@@ -43,9 +43,9 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
             data: {id:id},
             
             success:function(response){
-            	
-            	$("#status").addClass('btn-success').removeClass('btn-danger');
-            	$("#status").prop('disbaled',true);
+            	alert("working");
+            	$("#seen"+id).addClass('btn-success').removeClass('btn-danger');
+            	$("#seen"+id).prop('disbaled',true);
             }
         });
 	 }
@@ -113,20 +113,20 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 							
 							<c:when test="${bean.status == 1}">
 								
-								<button onclick="status('${bean.complainId}')" type="submit" class="btn btn-block btn-success btn-sm" id="status" disabled>Status</button>
+								<button onclick="status('${bean.complainId}')" type="button" class="btn btn-block btn-success btn-sm" id="seen${bean.complainId}" disabled>Status</button>
 							
 							</c:when>
 						
 							<c:otherwise>
 								
-								<button onclick="status('${bean.complainId}')" type="submit" class="btn btn-block btn-danger btn-sm" id="status">Status</button>
+								<button onclick="status('${bean.complainId}')" type="button" class="btn btn-block btn-danger btn-sm" id="seen${bean.complainId}">Status</button>
 							
 							</c:otherwise>
 						</c:choose>
 					
 					</div>
 					<div class="file_status" style="width:200px">
-						<button type="button" class="btn btn-block btn-info btn-sm">Download File</button>
+						<button type="button" class="btn btn-block btn-info btn-sm" onclick="window.location.href= '${pageContext.request.contextPath}/admin/downloadComplain?id=${bean.complainId}'">Download File</button>
 					</div>
 					</div>
 				</div>
