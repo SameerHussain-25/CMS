@@ -24,9 +24,17 @@ keyframes swing { 0% {
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -36,10 +44,22 @@ transform
 
 
 
+
+
+
+
 rotate
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -49,7 +69,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 ;
@@ -59,9 +87,17 @@ rotate
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -71,10 +107,22 @@ transform
 
 
 
+
+
+
+
 rotate
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -84,7 +132,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 ;
@@ -94,9 +150,17 @@ rotate
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -106,10 +170,22 @@ transform
 
 
 
+
+
+
+
 rotate
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -119,7 +195,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 ;
@@ -129,9 +213,17 @@ rotate
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -141,10 +233,22 @@ transform
 
 
 
+
+
+
+
 rotate
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -154,7 +258,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 ;
@@ -164,9 +276,17 @@ rotate
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -176,10 +296,22 @@ transform
 
 
 
+
+
+
+
 rotate
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -189,7 +321,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 ;
@@ -199,9 +339,17 @@ rotate
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -211,10 +359,22 @@ transform
 
 
 
+
+
+
+
 rotate
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -224,7 +384,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 ;
@@ -234,9 +402,17 @@ rotate
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -246,10 +422,22 @@ transform
 
 
 
+
+
+
+
 rotate
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -259,12 +447,24 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 ;
 }
 100
+
+
+
+
 
 
 
@@ -276,7 +476,15 @@ transform
 
 
 
+
+
+
+
 :
+
+
+
+
 
 
 
@@ -284,7 +492,15 @@ transform
 rotate
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -294,7 +510,15 @@ rotate
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 ;
@@ -311,9 +535,17 @@ keyframes sonar { 0% {
 
 
 
+
+
+
+
 %
 {
 transform
+
+
+
+
 
 
 
@@ -323,10 +555,22 @@ transform
 
 
 
+
+
+
+
 scale
 
 
+
+
+
+
 (
+
+
+
+
 
 
 
@@ -336,11 +580,23 @@ scale
 
 
 
+
+
+
+
 )
+
+
+
+
 
 
 ;
 opacity
+
+
+
+
 
 
 
@@ -350,7 +606,15 @@ opacity
 
 
 
+
+
+
+
 0
+
+
+
+
 
 
 ;
@@ -389,63 +653,73 @@ body {
 			<jsp:include page="/resources/parts/topnav.jsp" />
 
 			<div class="container-fluid">
-			<c:choose>
-			<c:when test="${complains != null}">
-			  <c:forEach var="bean" items="${complains}">
-				
-				<div class="card justify-content-center">
-					<div class="card-header">
-					   ${bean.datetime}
-					</div>
-					<div class="card-body">
-						<h5 class="card-title">Complain Text</h5>
-						<p class="card-text">${bean.complain}</p>
-					</div>
-					
-					<c:set var="catId" value="${bean.complainCatId}" />
-					<c:set var="stdRegId" value="${bean.stdRegId}" />
-					
-					<% 
-						try{
-						
-							int  catId = (Integer) pageContext.getAttribute("catId");
-							int stdId = (Integer) pageContext.getAttribute("stdRegId");
-							
-							java.util.ArrayList<String> values = model.CMSDbManager.getComplainCategoryByComplainCatIdAndStdRegId(catId, stdId);
-						
-							pageContext.setAttribute("category",values.get(1));
-							pageContext.setAttribute("studentName",values.get(0));
-							
-						}catch(Exception e){
-							e.printStackTrace();
-						}
-					%>
-					
-					<ul class="list-group list-group-flush">
-						<li class="list-group-item">Name: <strong>${studentName}</strong></li>
-						<li class="list-group-item">Complain About:<strong>${category}</strong></li>
-						<li class="list-group-item">File Uploaded Type:<strong></strong> </li>
-					</ul>
-					<div class="card-body">
-						<a href="#" class="card-link">Card link</a> <a href="#"
-							class="card-link">Another link</a>
-					</div>
-				</div>
-				
-			  </c:forEach>
-			  </c:when>
-			  <c:otherwise>
-			    
-			    	<div class="card justify-content-center">
-					<div class="card-header">
-					   No Data
-					</div>
-					<div class="card-body">
-						<h1>There are no complains yet</h1>
-					</div>
-					</div>	    
-			  </c:otherwise>
-			  </c:choose>
+				<c:choose>
+					<c:when test="${complains != null}">
+						<c:forEach var="bean" items="${complains}">
+
+							<div class="card justify-content-center">
+								<div class="card-header">${bean.datetime}</div>
+								<div class="card-body">
+									<h5 class="card-title">Complain Text</h5>
+									<p class="card-text">${bean.complain}</p>
+								</div>
+
+								<c:set var="catId" value="${bean.complainCatId}" />
+								<c:set var="stdRegId" value="${bean.stdRegId}" />
+
+								<%
+									try {
+
+									int catId = (Integer) pageContext.getAttribute("catId");
+									int stdId = (Integer) pageContext.getAttribute("stdRegId");
+
+									java.util.ArrayList<String> values = model.CMSDbManager.getComplainCategoryByComplainCatIdAndStdRegId(catId, stdId);
+
+									pageContext.setAttribute("category", values.get(1));
+									pageContext.setAttribute("studentName", values.get(0));
+
+								} catch (Exception e) {
+									e.printStackTrace();
+								}
+								%>
+
+								<ul class="list-group list-group-flush">
+									<li class="list-group-item">Name: <strong>${studentName}</strong></li>
+									<li class="list-group-item">Complain About:<strong>${category}</strong></li>
+									</li>
+								</ul>
+								<div class="card-body">
+									<a href="#" class="card-link">Card link</a> <a href="#"
+										class="card-link">Another link</a>
+									<div class="text-right">
+										<c:choose>
+											<c:when test="${bean.status == 0}">
+												
+												<i class="fas fa-eye-slash fa-lg" style="color:red;"></i>
+											
+											</c:when>
+											<c:otherwise>
+
+												<i class="fas fa-eye fa-lg"  style="color:green;"></i>
+
+											</c:otherwise>
+										</c:choose>
+									</div>
+								</div>
+							</div>
+
+						</c:forEach>
+					</c:when>
+					<c:otherwise>
+
+						<div class="card justify-content-center">
+							<div class="card-header">No Data</div>
+							<div class="card-body">
+								<h1>There are no complains yet</h1>
+							</div>
+						</div>
+					</c:otherwise>
+				</c:choose>
 			</div>
 			<jsp:include page="/resources/parts/footer.html" />
 			<!-- /#page-content-wrapper -->

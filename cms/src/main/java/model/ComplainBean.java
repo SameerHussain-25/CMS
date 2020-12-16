@@ -16,13 +16,14 @@ public class ComplainBean {
 	    public ComplainBean() {
 	    }
 
-	    public ComplainBean(int complainId, int complainCatId, int stdRegId, String complain, String location, Timestamp datetime, String remark) {
+	    public ComplainBean(int complainId, int complainCatId, int stdRegId, String complain, String location, Timestamp datetime, int status ,String remark) {
 	        this.complainId = complainId;
 	        this.complainCatId = complainCatId;
 	        this.stdRegId = stdRegId;
 	        this.complain = complain;
 	        this.location = location;
 	        this.datetime = datetime;
+	        this.status = status;
 	        this.remark = remark;
 	    }
 
