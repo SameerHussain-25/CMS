@@ -21,26 +21,31 @@ public class ListComplain extends HttpServlet {
 	}
 
 	/**
-	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
+	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse
+	 *      response)
 	 */
-	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		
-		javax.servlet.http.HttpSession session=request.getSession();
-		model.StudentBean user = (model.StudentBean)session.getAttribute("user");
-		
-		if(user != null){
+	protected void doGet(HttpServletRequest request, HttpServletResponse response)
+			throws ServletException, IOException {
+
+		javax.servlet.http.HttpSession session = request.getSession();
+		model.StudentBean user = (model.StudentBean) session.getAttribute("user");
+		model.AdminBean admin = (model.AdminBean) session.getAttribute("admin");
+
+		if (admin != null)
+			response.sendRedirect("admin");
+
+		else if (user != null) {
 			try {
 				int stdRegId = CMSDbManager.getStdRegId(user.getstdId());
 				ArrayList<ComplainBean> complains = CMSDbManager.getComplains(stdRegId);
-				request.setAttribute("complains",complains);
-				request.getRequestDispatcher("/WEB-INF/view/listcomplain.jsp").forward(request,response);
-			}catch(Exception e) {
+				request.setAttribute("complains", complains);
+				request.getRequestDispatcher("/WEB-INF/view/listcomplain.jsp").forward(request, response);
+			} catch (Exception e) {
 				e.printStackTrace();
-			}	
-		 }
-		 else {
-			 response.sendRedirect("login");
-		 }
+			}
+		} else {
+			response.sendRedirect("login");
+		}
 	}
 
 }

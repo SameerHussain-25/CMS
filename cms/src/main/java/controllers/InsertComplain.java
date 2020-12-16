@@ -33,7 +33,12 @@ public class InsertComplain extends HttpServlet {
 
 		javax.servlet.http.HttpSession session = request.getSession();
 		model.StudentBean user = (model.StudentBean) session.getAttribute("user");
-		if (user != null) {
+		model.AdminBean admin = (model.AdminBean) session.getAttribute("admin");
+		
+		if(admin != null)
+			response.sendRedirect("admin");
+		
+		else if (user != null) {
 
 			try {
 

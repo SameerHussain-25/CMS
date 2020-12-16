@@ -36,9 +36,6 @@ public class AdminIndex extends HttpServlet {
 			try {
 				ArrayList<StudentBean> list = CMSDbManager.getStudents();
 				request.setAttribute("list", list);
-				ArrayList<RegStdDataBean> regstd=CMSDbManager.getRegStudentsData();
-				
-				request.setAttribute("list2",regstd);
 				request.getRequestDispatcher("/WEB-INF/view/admin/index.jsp").forward(request, response);
 			
 			}catch(Exception e) {
