@@ -10,7 +10,6 @@
 		<description></description>
 		<servlet-class>repository.ComplainRepository</servlet-class>
 	</servlet>
-
 	<servlet-mapping>
 		<servlet-name>ComplainRepository</servlet-name>
 		<url-pattern>/ComplainRepository</url-pattern>

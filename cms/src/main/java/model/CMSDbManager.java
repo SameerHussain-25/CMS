@@ -636,10 +636,10 @@ public static ArrayList<RegStdDataBean> getRegStudentsData()throws Exception{
 	      		  list = new ArrayList<RegStdDataBean>();
 	      	  
 	      	  RegStdDataBean bean = new RegStdDataBean();	 
-	        	bean.setStd_reg_id(rs.getInt("std_reg_id"));
-	            bean.setStd_name(rs.getString("std_name"));
+	        	bean.setStdRegId(rs.getInt("std_reg_id"));
+	            bean.setStdName(rs.getString("std_name"));
 	            bean.setCnic(rs.getString("cnic"));
-	            bean.setLog_id(rs.getString("roll_num"));
+	            bean.setLogId(rs.getString("roll_num"));
 	            bean.setPassword(rs.getString("password"));
 	           
 	            list.add(bean);

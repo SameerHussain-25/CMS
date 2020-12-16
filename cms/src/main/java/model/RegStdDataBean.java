@@ -9,29 +9,27 @@ public class RegStdDataBean {
 	private String password;
 	
 	
-	public RegStdDataBean() {
-		
-	}
+	public RegStdDataBean() {}
 	
-	public RegStdDataBean(int std_reg_id, String std_name, String cnic, String log_id, String password) {
-		this.stdRegId = std_reg_id;
-		this.stdName = std_name;
+	public RegStdDataBean(int stdRegId, String stdName, String cnic, String logId, String password) {
+		this.stdRegId = stdRegId;
+		this.stdName = stdName;
 		this.cnic = cnic;
-		this.logId = log_id;
+		this.logId = logId;
 		this.password = password;
 	}
 	
-	public int getStd_reg_id() {
+	public int getStdRegId() {
 		return stdRegId;
 	}
-	public void setStd_reg_id(int std_reg_id) {
-		this.stdRegId = std_reg_id;
+	public void setStdRegId(int stdRegId) {
+		this.stdRegId = stdRegId;
 	}
-	public String getStd_name() {
+	public String getStdName() {
 		return stdName;
 	}
-	public void setStd_name(String std_name) {
-		this.stdName = std_name;
+	public void setStdName(String stdName) {
+		this.stdName = stdName;
 	}
 	public String getCnic() {
 		return cnic;
@@ -39,11 +37,11 @@ public class RegStdDataBean {
 	public void setCnic(String cnic) {
 		this.cnic = cnic;
 	}
-	public String getLog_id() {
+	public String getLogId() {
 		return logId;
 	}
-	public void setLog_id(String log_id) {
-		this.logId = log_id;
+	public void setLogId(String logId) {
+		this.logId = logId;
 	}
 	public String getPassword() {
 		return password;

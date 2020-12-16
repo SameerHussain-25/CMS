@@ -28,7 +28,7 @@ public class Login extends HttpServlet {
 		
 		HttpSession session = request.getSession();
 		model.StudentBean user = (model.StudentBean)session.getAttribute("user");
-		model.AdminBean admin = (model.AdminBean)session.getAttribute("amin");
+		model.AdminBean admin = (model.AdminBean)session.getAttribute("admin");
 		
 		String logout = request.getParameter("logout");
 		String error = request.getParameter("error");
@@ -42,7 +42,7 @@ public class Login extends HttpServlet {
 		else if(user != null) {
 			response.sendRedirect("insertComplain");
 		}
-		else if(admin !=null) {
+		else if(admin != null) {
 			response.sendRedirect("admin");
 		}
 		else 

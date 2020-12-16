@@ -43,49 +43,35 @@ response.setHeader("cache-control", "no-store");
       <div class="container-fluid">
       	
       	  <jsp:include page="/resources/adminParts/adminColorBox.jsp" />
-
-        <div class="row">
+        
+          <div class="row">
           <div class="col-12">
             <div class="card">
               <div class="card-header">
-                <h3 class="card-title" style="font-family: Arial Black;">Universty Students Data</h3>
+                <h3 class="card-title" style="font-family: Arial Black;">CMS Registerd Students Data</h3>
               </div>
               <!-- /.card-header -->
               <div class="card-body">
                 <table id="example1" class="table table-bordered table-striped" aria-describedby="DataTable">
                   <thead>
                   <tr>
-                    <th scope="header_table">Student ID</th>
+                    <th scope="header_table">Student Reg ID</th>
                     <th scope="header_table">Student Name</th>
-                    <th scope="header_table">Father Name</th>
-                    <th scope="header_table">Surname</th>
-                    <th scope="header_table">Religion</th>
-                    <th scope="header_table">Country</th>
-                    <th scope="header_table">Gender</th>
-                    <th scope="header_table">Roll No</th>
-                    <th scope="header_table">Department</th>
-                    <th scope="header_table">Program</th>
-                    <th scope="header_table">Batch</th>
+                    <th scope="header_table">CNIC number</th>
+                    <th scope="header_table">Login Username</th>
+                    <th scope="header_table">Password</th>
                   </tr>
                   </thead>
                   <tbody>
-                  
-                  <c:if test="${list != null}">
-                  
-                  <c:forEach var="bean" items="${list}">
-                  
+                  <c:if test="${list2 != null}">
+            
+                  <c:forEach var="bean" items="${list2}">
 	                  <tr>
-	                 	<td>${bean.stdId}</td>
-	                 	<td>${bean.name}</td>
-	                 	<td>${bean.fatherName}</td>
-	                 	<td>${bean.surname}</td>
-	                 	<td>${bean.religion}</td>
-	                 	<td>${bean.country}</td>
-	                 	<td>${bean.gender}</td>
-	                 	<td>${bean.rollNum}</td>
-	                 	<td>${bean.department}</td>
-	                 	<td>${bean.program}</td>
-	                 	<td>${bean.batch}</td>
+	                 	<td>${bean.stdRegId}</td>
+	                 	<td>${bean.stdName}</td>
+	                 	<td>${bean.cnic}</td>
+	                 	<td>${bean.logId}</td>
+	                 	<td>${bean.password}</td>
 	                  </tr>
                   
                   </c:forEach>
@@ -93,17 +79,11 @@ response.setHeader("cache-control", "no-store");
                   </tbody>
                   <tfoot>
                   <tr>
-                    <th scope="footer_table">Student ID</th>
-                    <th scope="footer_table">Student Name</th>
-                    <th scope="footer_table">Father Name</th>
-                    <th scope="footer_table">Surname</th>
-                    <th scope="footer_table">Religion</th>
-                    <th scope="footer_table">Country</th>
-                    <th scope="footer_table">Gender</th>
-                    <th scope="footer_table">Roll No</th>
-                    <th scope="footer_table">Department</th>
-                    <th scope="footer_table">Program</th>
-                    <th scope="footer_table">Batch</th>
+               <th scope="header_table">Student Reg ID</th>
+                    <th scope="header_table">Student Name</th>
+                    <th scope="header_table">CNIC number</th>
+                    <th scope="header_table">Login Username</th>
+                    <th scope="header_table">Password</th>
                   </tr>
                   </tfoot>
                 </table>
@@ -130,9 +110,6 @@ response.setHeader("cache-control", "no-store");
 </div>
 <!-- ./wrapper -->
 
- <jsp:include page="/resources/adminParts/adminScripts.jsp">
- 	<jsp:param name="expandPrint" value="yes" />
- </jsp:include>
- 
+ <jsp:include page="/resources/adminParts/adminScripts.jsp" />
 </body>
 </html>

@@ -55,10 +55,19 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
             </a>
           </li>
           <li class="nav-item">
-            <a href="students.html" class="nav-link">
-              <em class="nav-icon fas fa-envelope-open-text"></em>
+            <a href="${pageContext.request.contextPath}/admin/registeredStudents" class="nav-link">
+              <em class="nav-icon fas fa-graduation-cap"></em>
               <p>
                 Students
+                <!-- <span class="right badge badge-danger">New</span> -->
+              </p>
+            </a>
+          </li>
+           <li class="nav-item">
+            <a href="${pageContext.request.contextPath}/logout" class="nav-link">
+              <em class="nav-icon fas fa-sign-out-alt"></em>
+              <p>
+                Logout
                 <!-- <span class="right badge badge-danger">New</span> -->
               </p>
             </a>

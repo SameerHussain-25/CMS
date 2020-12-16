@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
 pageEncoding="ISO-8859-1" isELIgnored="false"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <!-- jQuery -->
 <script src="${pageContext.request.contextPath}/resources/plugins/jquery/jquery.min.js"></script>
 <!-- jQuery UI 1.11.4 -->
@@ -50,6 +51,11 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
 <script src="${pageContext.request.contextPath}/resources/plugins/datatables-buttons/js/buttons.colVis.min.js"></script>
 
 <script>
+
+<c:choose>
+
+<c:when test="${param.expandPrint == 'yes'}">
+
   $(function () {
     $("#example1").DataTable({
       "responsive": true, "lengthChange": false, "autoWidth": false,
@@ -70,5 +76,28 @@ pageEncoding="ISO-8859-1" isELIgnored="false"%>
     });
 
   });
-	 
+  
+  </c:when>
+  
+  <c:otherwise>
+  	
+  $(function () {
+	    $("#example1").DataTable({
+	      "responsive": true, "lengthChange": false, "autoWidth": false,
+	      "buttons": ["copy", "csv", "excel","pdf", "print", "colvis"],
+	    }).buttons().container().appendTo('#example1_wrapper .col-md-6:eq(0)');
+	    $('#example2').DataTable({
+	      "paging": true,
+	      "lengthChange": false,
+	      "searching": false,
+	      "ordering": true,
+	      "info": true,
+	      "autoWidth": false,
+	      "responsive": true,
+	    });
+
+	  });
+  
+  </c:otherwise>
+</c:choose>	 
 </script>
